@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 172 72" fill="none">
+  <rect x="8" y="18" width="34" height="34" rx="10" fill="#BF8857" fill-opacity=".12"/>
+  <path d="M18 43V27L31 43V27" stroke="#1E1A47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="56" y="36" fill="#111111" font-family="Montserrat, Arial, sans-serif" font-size="24" font-weight="700">Nupec</text>
+  <text x="56" y="54" fill="#6C7686" font-family="Montserrat, Arial, sans-serif" font-size="10" font-weight="700" letter-spacing="2.2">BALANCED FOOD</text>
+</svg>

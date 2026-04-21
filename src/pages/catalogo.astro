@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import FilterTabs from "@/components/catalog/FilterTabs.astro";
+import ProductGrid from "@/components/catalog/ProductGrid.astro";
+import { activeProducts } from "@/lib/content";
+---
+<BaseLayout
+  title="Catálogo BorderVet — productos para perros y gatos"
+  description="Explora el catálogo premium de BorderVet, inspirado en la experiencia visual de Petopia y adaptado al contexto veterinario."
+>
+  <section class="catalog-hero">
+    <div class="container-shell">
+      <div class="catalog-hero__breadcrumbs">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>Catálogo</span>
+      </div>
+      <h1 class="page-title">Catálogo BorderVet</h1>
+      <p class="section-subtitle" style="max-width:42rem;margin-top:1rem;">
+        Grid completo, filtros simples y acceso directo al carrito. La lógica de compra sigue siendo liviana, pero la experiencia ya se siente premium.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-block">
+    <div class="container-shell">
+      <FilterTabs />
+      <ProductGrid products={activeProducts} />
+      <div class="empty-state" data-filter-empty hidden>
+        <strong class="card-title">No hay productos en esta categoría</strong>
+        <p class="product-copy">Prueba con otra categoría o vuelve a “Todos”.</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

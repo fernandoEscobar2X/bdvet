@@ -1,0 +1,36 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { policiesContent } from "@/lib/content";
+
+const policy = policiesContent.terms;
+---
+<BaseLayout title="Términos de servicio — BorderVet" description={policy.intro}>
+  <section class="page-hero">
+    <div class="container-shell">
+      <div class="catalog-hero__breadcrumbs">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <span>{policy.title}</span>
+      </div>
+      <h1 class="page-title">{policy.title}</h1>
+    </div>
+  </section>
+
+  <section class="section-block" style="padding-top:1rem;">
+    <div class="container-shell">
+      <article class="policy-card">
+        <p class="product-copy">{policy.intro}</p>
+        <div class="policy-content">
+          {policy.sections.map((section) => (
+            <section class="policy-section">
+              <h2>{section.heading}</h2>
+              {section.paragraphs.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+            </section>
+          ))}
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

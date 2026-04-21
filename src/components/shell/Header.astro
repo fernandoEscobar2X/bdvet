@@ -1,0 +1,80 @@
+---
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import Icon from "@/components/ui/Icon.astro";
+
+const pathname = Astro.url.pathname;
+const navItems = [
+  { label: "Inicio", href: "/" },
+  { label: "Nosotros", href: "/#nosotros" },
+  { label: "Asesoria", href: "/#asesoria" },
+  { label: "Catalogo", href: "/catalogo" },
+  { label: "Contacto", href: "/#contacto" },
+];
+---
+<header class="site-header" data-header data-scrolled="false" style="--header-progress:0;">
+  <span class="site-header__veil" aria-hidden="true"></span>
+  <div class="container-shell">
+    <div class="header-inner header-shell">
+      <a href="/" class="brand-lockup header-brand" aria-label="Ir al inicio de BorderVet">
+        <BrandLogo variant="header" />
+      </a>
+
+      <div class="header-nav-frame desktop-nav">
+        <nav class="nav header-nav" aria-label="Principal">
+          {navItems.map((item) => (
+            <a
+              href={item.href}
+              class="nav-link"
+              aria-current={pathname === item.href ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <div class="header-actions">
+        <div class="header-action-cluster desktop-only">
+          <a
+            href="/catalogo"
+            class="header-icon-link"
+            aria-label="Explorar catalogo"
+          >
+            <Icon name="search" size={18} />
+          </a>
+
+          <a
+            href="/#contacto"
+            class="header-icon-link"
+            aria-label="Ver contacto"
+          >
+            <Icon name="user" size={18} />
+          </a>
+        </div>
+
+        <button
+          type="button"
+          class="header-cart-pill"
+          data-cart-toggle="true"
+          data-header-cart-pill
+          aria-label="Abrir carrito"
+        >
+          <span class="header-cart-pill__icon" aria-hidden="true">
+            <Icon name="cart" size={18} />
+          </span>
+          <span class="header-cart-pill__label">Carrito</span>
+          <span class="header-cart-count" data-cart-count hidden>0</span>
+        </button>
+
+        <button
+          type="button"
+          class="header-mobile-toggle mobile-only"
+          data-nav-toggle="true"
+          aria-label="Abrir menu movil"
+        >
+          <Icon name="menu" size={18} />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

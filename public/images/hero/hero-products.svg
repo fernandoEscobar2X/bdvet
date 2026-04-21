@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="heroSky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#BFD8F2"/>
+      <stop offset="100%" stop-color="#A8CAE9"/>
+    </linearGradient>
+    <radialGradient id="heroGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(845 318) rotate(90) scale(254 284)">
+      <stop stop-color="#E8F3DC"/>
+      <stop offset="1" stop-color="#E8F3DC" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="900" rx="56" fill="url(#heroSky)"/>
+  <circle cx="226" cy="242" r="168" fill="#ffffff" fill-opacity=".28"/>
+  <circle cx="964" cy="228" r="178" fill="url(#heroGlow)"/>
+  <circle cx="886" cy="662" r="170" fill="#ffffff" fill-opacity=".18"/>
+  <path d="M0 820c86-46 162-69 228-69 92 0 163 33 231 33 69 0 122-28 187-28 65 0 128 29 204 29 93 0 180-36 350-36v151H0V820Z" fill="#fff"/>
+  <path d="M0 786c68-35 140-53 218-53 92 0 160 29 230 29 63 0 124-24 188-24 68 0 123 25 210 25 92 0 164-28 354-28" stroke="#fff" stroke-width="18" stroke-linecap="round"/>
+  <image href="/images/brand/logo-bordervet-transparent.png" x="604" y="146" width="382" height="560" preserveAspectRatio="xMidYMid meet"/>
+  <g opacity=".96">
+    <circle cx="254" cy="512" r="136" fill="#D58441"/>
+    <circle cx="286" cy="688" r="52" fill="#A7B6C5"/>
+    <rect x="220" y="676" width="146" height="54" rx="26" fill="#EAECEF"/>
+    <path d="M120 689c0-35 28-63 63-63h161c36 0 64 28 64 63 0 16-7 30-18 41H138c-11-11-18-25-18-41Z" fill="#C7D1DA"/>
+    <path d="M198 377c24-26 58-40 102-40 63 0 113 33 136 87 21 48 21 130-22 168-26 23-57 28-94 28-82 0-149-60-149-152 0-35 9-66 27-91Z" fill="#C96F2D"/>
+    <path d="M146 436c-34 44-48 102-44 164" stroke="#AD5C24" stroke-width="20" stroke-linecap="round"/>
+    <path d="M310 720c0 44 33 80 74 80h228c41 0 74-36 74-80v-6H310v6Z" fill="#ffffff" fill-opacity=".9"/>
+  </g>
+  <g opacity=".94">
+    <circle cx="740" cy="720" r="44" fill="#76A83C"/>
+    <circle cx="822" cy="734" r="50" fill="#E1C245"/>
+    <circle cx="916" cy="718" r="38" fill="#F59342"/>
+    <rect x="978" y="680" width="118" height="22" rx="11" fill="#7FC4D5"/>
+    <rect x="1022" y="714" width="110" height="24" rx="12" fill="#95D6E0"/>
+    <circle cx="1048" cy="724" r="18" fill="#ffffff"/>
+    <circle cx="1098" cy="724" r="18" fill="#ffffff"/>
+  </g>
+</svg>

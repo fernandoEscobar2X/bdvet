@@ -1,0 +1,32 @@
+---
+import "@/styles/catalog.css";
+
+import Icon from "@/components/ui/Icon.astro";
+
+const filters = [
+  { value: "todos", label: "Todos", icon: "package" },
+  { value: "perros", label: "Perros", icon: "paw" },
+  { value: "gatos", label: "Gatos", icon: "heart" },
+] as const;
+---
+<div class="catalog-filter" data-reveal="up" aria-label="Filtros del catalogo">
+  <div class="catalog-filter__meta">
+    <span class="catalog-filter__eyebrow">Explora rapido</span>
+    <p class="catalog-filter__copy">Filtra por categoria sin perder el tono premium del catalogo.</p>
+  </div>
+
+  <div class="catalog-filter__chips">
+    {filters.map((filter, index) => (
+      <button
+        class="catalog-filter__chip"
+        type="button"
+        data-filter-button
+        data-filter={filter.value}
+        data-active={index === 0 ? "true" : "false"}
+      >
+        <Icon name={filter.icon} size={16} />
+        <span>{filter.label}</span>
+      </button>
+    ))}
+  </div>
+</div>

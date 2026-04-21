@@ -1,0 +1,82 @@
+---
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { contactContent, siteContent } from "@/lib/content";
+---
+<footer class="footer">
+  <div class="container-shell">
+    <div class="footer-grid footer-shell">
+      <section class="footer-brand">
+        <div class="brand-lockup">
+          <BrandLogo variant="footer" />
+        </div>
+
+        <p class="footer-lead">{siteContent.tagline}</p>
+        <p class="footer-copy">{siteContent.addressLine}</p>
+
+        <div class="social-links">
+          <a
+            class="social-link"
+            href={siteContent.socials.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <Icon name="instagram" size={18} />
+          </a>
+          <a
+            class="social-link"
+            href={siteContent.socials.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+          >
+            <Icon name="facebook" size={18} />
+          </a>
+          <a
+            class="social-link"
+            href={siteContent.socials.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp"
+          >
+            <Icon name="whatsapp" size={18} />
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="footer-heading">Explora</h3>
+        <ul class="footer-links">
+          <li><a href="/">Inicio</a></li>
+          <li><a href="/#nosotros">Nosotros</a></li>
+          <li><a href="/#asesoria">Asesoria virtual</a></li>
+          <li><a href="/catalogo">Catalogo</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="footer-heading">Legales</h3>
+        <ul class="footer-links">
+          <li><a href="/politicas/privacidad">Privacidad</a></li>
+          <li><a href="/politicas/terminos">Terminos</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="footer-heading">Contacto</h3>
+        <ul class="footer-links">
+          <li>{contactContent.addressTitle}</li>
+          <li><a href={`tel:${contactContent.phoneDisplay}`}>{contactContent.phoneDisplay}</a></li>
+          <li><a href={`mailto:${contactContent.email}`}>{contactContent.email}</a></li>
+          <li>{contactContent.hours}</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 BorderVet. Todos los derechos reservados.</span>
+      <span>Inspirado en Petopia, adaptado al contexto veterinario de Tijuana.</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,254 @@
+---
+import Button from "@/components/ui/Button.astro";
+
+const badges = ["Tijuana", "Perros y gatos", "Atencion cercana"];
+const stats = [
+  {
+    value: "+50",
+    label: "Productos disponibles en el catalogo",
+  },
+  {
+    value: "2 canales",
+    label: "WhatsApp y videoconsulta veterinaria",
+  },
+  {
+    value: "24-48 h",
+    label: "Respuesta y entrega local en Tijuana",
+  },
+] as const;
+const HERO_PLACEHOLDER = "/images/placeholders/hero-placeholder.svg";
+const BRAND_PLACEHOLDER = "/images/placeholders/brand-placeholder.svg";
+const heroFallback = `this.onerror=null;this.src='${HERO_PLACEHOLDER}'`;
+const brandFallback = `this.onerror=null;this.src='${BRAND_PLACEHOLDER}'`;
+---
+<section class="about-premium section-block" id="nosotros" aria-labelledby="about-premium-title">
+  <div class="container-shell">
+    <div class="about-premium__shell">
+      <div class="about-premium__visual" data-reveal="right">
+        <div class="about-premium__image-frame">
+          <img
+            src="/images/hero/about-visual.svg"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            onerror={heroFallback}
+          />
+        </div>
+
+        <div class="about-premium__stamp">
+          <img
+            src="/images/brand/logo-bordervet-transparent.png"
+            alt="BorderVet"
+            loading="lazy"
+            decoding="async"
+            onerror={brandFallback}
+          />
+        </div>
+      </div>
+
+      <div class="about-premium__content" data-reveal="left">
+        <span class="eyebrow">Sobre BorderVet</span>
+        <h2 id="about-premium-title" class="about-premium__title">
+          Veterinaria y tienda premium en un mismo lugar, desde Tijuana
+        </h2>
+
+        <p class="about-premium__lead">
+          BorderVet nacio para ofrecer productos veterinarios de calidad con atencion real. Seleccion cuidada, precios claros y orientacion cuando la necesitas.
+        </p>
+
+        <p class="about-premium__copy">
+          Trabajamos con marcas como Royal Canin, Hill's y Purina porque tus mascotas merecen lo mejor. Pedidos por WhatsApp, respuesta rapida y entrega local en Tijuana.
+        </p>
+
+        <div class="about-premium__badges">
+          {badges.map((badge) => (
+            <span>{badge}</span>
+          ))}
+        </div>
+
+        <div class="about-premium__stats">
+          {stats.map((stat) => (
+            <article class="about-premium__stat">
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
+            </article>
+          ))}
+        </div>
+
+        <div class="about-premium__actions">
+          <Button href="/catalogo" variant="surface">Explorar catalogo</Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-premium__shell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.96fr) minmax(0, 1.04fr);
+    gap: clamp(1.4rem, 3vw, 2.8rem);
+    align-items: center;
+  }
+
+  .about-premium__visual {
+    position: relative;
+    min-width: 0;
+  }
+
+  .about-premium__image-frame {
+    min-height: 35rem;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 2.4rem 2.4rem 5.5rem 2.4rem;
+    background:
+      radial-gradient(circle at 24% 20%, rgba(255, 255, 255, 0.48), transparent 18%),
+      linear-gradient(145deg, rgba(224, 242, 255, 1), rgba(255, 255, 255, 0.98));
+    border: 1px solid rgba(231, 223, 210, 0.8);
+    box-shadow: var(--shadow-card);
+  }
+
+  .about-premium__image-frame img {
+    width: min(90%, 31rem);
+    height: auto;
+    object-fit: contain;
+  }
+
+  .about-premium__stamp {
+    position: absolute;
+    right: 1.4rem;
+    bottom: 1.4rem;
+    width: min(12rem, 44%);
+    padding: 0.8rem 1rem;
+    border-radius: 1.4rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(231, 223, 210, 0.9);
+    box-shadow: 0 16px 34px rgba(17, 17, 17, 0.09);
+  }
+
+  .about-premium__stamp img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .about-premium__content {
+    min-width: 0;
+  }
+
+  .about-premium__title {
+    margin: 0.95rem 0 1rem;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.8vw, 3.4rem);
+    line-height: 0.99;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .about-premium__lead,
+  .about-premium__copy {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.82;
+  }
+
+  .about-premium__lead {
+    font-size: 1.04rem;
+  }
+
+  .about-premium__copy {
+    margin-top: 1rem;
+    font-size: 0.98rem;
+  }
+
+  .about-premium__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.4rem;
+  }
+
+  .about-premium__badges span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 0.9rem;
+    border-radius: var(--radius-pill);
+    background: rgba(248, 246, 242, 1);
+    border: 1px solid rgba(231, 223, 210, 0.86);
+    color: var(--color-primary);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+
+  .about-premium__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(231, 223, 210, 0.56);
+  }
+
+  .about-premium__stat {
+    padding: 1.1rem 1rem 1.1rem 0;
+    border-right: 1px solid rgba(231, 223, 210, 0.56);
+  }
+
+  .about-premium__stat:last-child {
+    border-right: none;
+  }
+
+  .about-premium__stat:not(:first-child) {
+    padding-left: 1rem;
+  }
+
+  .about-premium__stat strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+  }
+
+  .about-premium__stat span {
+    display: block;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .about-premium__actions {
+    margin-top: 1.6rem;
+  }
+
+  @media (max-width: 980px) {
+    .about-premium__shell {
+      grid-template-columns: 1fr;
+    }
+
+    .about-premium__image-frame {
+      min-height: 28rem;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .about-premium__stats {
+      grid-template-columns: 1fr;
+    }
+
+    .about-premium__stat {
+      border-right: none;
+      border-bottom: 1px solid rgba(231, 223, 210, 0.56);
+      padding-left: 0;
+    }
+
+    .about-premium__stat:last-child {
+      border-bottom: none;
+    }
+
+    .about-premium__stamp {
+      width: 10rem;
+    }
+  }
+</style>

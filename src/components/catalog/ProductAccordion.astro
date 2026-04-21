@@ -1,0 +1,38 @@
+---
+import type { Product } from "@/domain/product";
+
+type Props = {
+  product: Product;
+};
+
+const { product } = Astro.props as Props;
+---
+<div class="product-accordion" aria-label="Informacion adicional del producto">
+  <details class="product-accordion__item" open>
+    <summary>Descripcion</summary>
+    <div class="product-accordion__content">
+      <p>{product.descripcion}</p>
+    </div>
+  </details>
+
+  <details class="product-accordion__item">
+    <summary>Lo que incluye</summary>
+    <div class="product-accordion__content">
+      <ul class="bullets">
+        {product.detalles.map((detail) => (
+          <li>{detail}</li>
+        ))}
+      </ul>
+    </div>
+  </details>
+
+  <details class="product-accordion__item">
+    <summary>Compra y asesoria</summary>
+    <div class="product-accordion__content">
+      <p>
+        BorderVet confirma disponibilidad, entrega local y seguimiento por WhatsApp para que la
+        compra siga sintiendose cercana y clara.
+      </p>
+    </div>
+  </details>
+</div>

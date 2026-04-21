@@ -1,0 +1,41 @@
+---
+import Badge from "@/components/ui/Badge.astro";
+import type { Product } from "@/domain/product";
+
+type Props = {
+  product: Product;
+};
+
+const { product } = Astro.props as Props;
+const PRODUCT_PLACEHOLDER = "/images/placeholders/product-placeholder.svg";
+const productFallback = `this.onerror=null;this.src='${PRODUCT_PLACEHOLDER}'`;
+---
+<div class="product-showcase" data-reveal="right">
+  <div class="product-showcase__frame">
+    <div class="product-showcase__topline">
+      <div class="product-showcase__tags">
+        <span class="product-showcase__tag">{product.marca}</span>
+        <span class="product-showcase__tag product-showcase__tag--soft">{product.categoria}</span>
+      </div>
+      {product.badge ? (
+        <span class="product-showcase__badge">
+          <Badge text={product.badge} />
+        </span>
+      ) : null}
+    </div>
+
+    <img
+      class="product-showcase__image"
+      src={product.imagen}
+      alt={product.nombre}
+      loading="eager"
+      onerror={productFallback}
+    />
+  </div>
+
+  <div class="product-showcase__trust-strip">
+    <span>Visual de producto</span>
+    <span>Curaduria BorderVet</span>
+    <span>Consulta por WhatsApp</span>
+  </div>
+</div>

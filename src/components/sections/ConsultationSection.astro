@@ -1,0 +1,255 @@
+---
+import Button from "@/components/ui/Button.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { servicesContent } from "@/lib/content";
+
+const supportPoints = [
+  "Respuesta por WhatsApp en minutos",
+  "Videoconsulta con un veterinario",
+  "Recomendaciones para tu caso",
+];
+const HERO_PLACEHOLDER = "/images/placeholders/hero-placeholder.svg";
+const heroFallback = `this.onerror=null;this.src='${HERO_PLACEHOLDER}'`;
+---
+<section class="consultation-premium section-block" id="asesoria" aria-labelledby="consultation-title">
+  <div class="container-shell">
+    <div class="consultation-premium__shell">
+      <div class="consultation-premium__intro" data-reveal="right">
+        <span class="eyebrow">Asesoria virtual</span>
+        <h2 id="consultation-title" class="consultation-premium__title">
+          Atencion veterinaria a distancia, cuando tu mascota lo necesita
+        </h2>
+        <p class="consultation-premium__description">
+          Una duda puntual, seguimiento post-consulta o la decision correcta antes de comprar. Te respondemos rapido, con criterio clinico real.
+        </p>
+
+        <ul class="consultation-premium__points">
+          {supportPoints.map((point) => (
+            <li>
+              <Icon name="shield" size={16} />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="consultation-premium__visual">
+          <img
+            src="/images/hero/hero-consultation.svg"
+            alt=""
+            loading="lazy"
+            decoding="async"
+            onerror={heroFallback}
+          />
+        </div>
+      </div>
+
+      <div class="consultation-premium__cards">
+        {servicesContent.map((service) => (
+          <article class="consultation-premium__card" data-reveal="up">
+            <div class="consultation-premium__card-header">
+              <span class="consultation-premium__icon">
+                <Icon name={service.ctaType === "whatsapp" ? "whatsapp" : "calendar"} size={18} />
+              </span>
+
+              <div class="consultation-premium__meta">
+                <span class="consultation-premium__mode">
+                  {service.ctaType === "whatsapp" ? "Respuesta inmediata" : "Consulta agendada"}
+                </span>
+                <h3>{service.nombre}</h3>
+              </div>
+            </div>
+
+            <p class="consultation-premium__card-copy">{service.descripcion}</p>
+
+            <div class="consultation-premium__card-tags">
+              {service.precio ? <span>${service.precio} MXN</span> : null}
+              {service.duracion ? <span>{service.duracion}</span> : null}
+            </div>
+
+            <ul class="consultation-premium__bullets">
+              {service.bullets.map((bullet) => (
+                <li>{bullet}</li>
+              ))}
+            </ul>
+
+            <Button
+              href={service.ctaTarget}
+              target="_blank"
+              variant={service.ctaType === "whatsapp" ? "primary" : "surface"}
+            >
+              {service.ctaLabel}
+            </Button>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .consultation-premium {
+    background:
+      linear-gradient(180deg, transparent, rgba(224, 242, 255, 0.24) 38%, transparent);
+  }
+
+  .consultation-premium__shell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(1.4rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+
+  .consultation-premium__intro {
+    min-width: 0;
+    padding: 2rem;
+    border-radius: 2.4rem;
+    background:
+      radial-gradient(circle at top right, rgba(255, 196, 70, 0.14), transparent 22%),
+      linear-gradient(145deg, rgba(30, 26, 71, 1), rgba(22, 18, 56, 1));
+    box-shadow: 0 22px 56px rgba(17, 17, 17, 0.14);
+  }
+
+  .consultation-premium__title {
+    margin: 1rem 0 1rem;
+    color: #ffffff;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    line-height: 0.99;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .consultation-premium__description {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.84);
+    line-height: 1.8;
+  }
+
+  .consultation-premium__points {
+    display: grid;
+    gap: 0.75rem;
+    margin: 1.4rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .consultation-premium__points li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .consultation-premium__visual {
+    margin-top: 1.8rem;
+    padding: 0;
+  }
+
+  .consultation-premium__visual img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .consultation-premium__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .consultation-premium__card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 1.4rem;
+    border: 1px solid rgba(231, 223, 210, 0.85);
+    border-radius: 2rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(248, 246, 242, 0.98));
+    box-shadow: var(--shadow-card);
+  }
+
+  .consultation-premium__card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .consultation-premium__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1.15rem;
+    background: rgba(30, 26, 71, 0.08);
+    color: var(--color-primary);
+    flex: 0 0 auto;
+  }
+
+  .consultation-premium__meta h3 {
+    margin: 0.28rem 0 0;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    line-height: 1.08;
+  }
+
+  .consultation-premium__mode {
+    display: inline-block;
+    color: var(--color-meta);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .consultation-premium__card-copy {
+    margin: 1rem 0 0;
+    color: var(--color-text);
+    line-height: 1.72;
+  }
+
+  .consultation-premium__card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+
+  .consultation-premium__card-tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55rem 0.78rem;
+    border-radius: var(--radius-pill);
+    background: rgba(224, 242, 255, 0.74);
+    color: var(--color-primary);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .consultation-premium__bullets {
+    display: grid;
+    gap: 0.55rem;
+    margin: 1rem 0 1.3rem;
+    padding-left: 1.1rem;
+    color: var(--color-text);
+    line-height: 1.65;
+  }
+
+  .consultation-premium__card :global(.btn) {
+    margin-top: auto;
+  }
+
+  @media (max-width: 980px) {
+    .consultation-premium__shell {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .consultation-premium__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

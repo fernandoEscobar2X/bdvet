@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 800" fill="none">
+  <defs>
+    <linearGradient id="aboutBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F4F8FB"/>
+      <stop offset="100%" stop-color="#E8F3DC"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="800" rx="54" fill="url(#aboutBg)"/>
+  <circle cx="246" cy="214" r="126" fill="#76A83C" fill-opacity=".18"/>
+  <circle cx="798" cy="176" r="104" fill="#17324D" fill-opacity=".08"/>
+  <circle cx="506" cy="400" r="220" fill="#ffffff" fill-opacity=".94"/>
+  <circle cx="506" cy="400" r="196" fill="#DDEAF6"/>
+  <image href="/images/brand/logo-bordervet-transparent.png" x="276" y="176" width="460" height="450" preserveAspectRatio="xMidYMid meet"/>
+  <g>
+    <rect x="182" y="566" width="202" height="64" rx="32" fill="#ffffff" fill-opacity=".94"/>
+    <circle cx="228" cy="598" r="14" fill="#76A83C"/>
+    <rect x="256" y="588" width="92" height="16" rx="8" fill="#17324D" fill-opacity=".2"/>
+  </g>
+  <g>
+    <rect x="616" y="214" width="170" height="170" rx="36" fill="#ffffff" fill-opacity=".94"/>
+    <rect x="660" y="250" width="82" height="82" rx="18" fill="#76A83C"/>
+    <rect x="704" y="294" width="82" height="82" rx="18" fill="#76A83C"/>
+  </g>
+  <g>
+    <rect x="618" y="470" width="194" height="108" rx="28" fill="#ffffff" fill-opacity=".92"/>
+    <rect x="650" y="502" width="126" height="18" rx="9" fill="#17324D" fill-opacity=".18"/>
+    <rect x="650" y="536" width="94" height="18" rx="9" fill="#76A83C" fill-opacity=".42"/>
+  </g>
+</svg>

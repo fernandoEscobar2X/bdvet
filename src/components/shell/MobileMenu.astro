@@ -1,0 +1,31 @@
+---
+import BrandLogo from "@/components/ui/BrandLogo.astro";
+import { siteContent } from "@/lib/content";
+---
+<aside class="mobile-drawer" data-mobile-menu data-open="false" aria-label="Menú móvil">
+  <div class="drawer-header">
+    <div class="brand-lockup">
+      <BrandLogo variant="surface" />
+    </div>
+  </div>
+  <div class="drawer-content">
+    <nav class="nav" style="flex-direction:column;align-items:flex-start;">
+      <a class="nav-link" href="/" data-nav-close>Inicio</a>
+      <a class="nav-link" href="/#nosotros" data-nav-close>Nosotros</a>
+      <a class="nav-link" href="/#asesoria" data-nav-close>Asesoría</a>
+      <a class="nav-link" href="/catalogo" data-nav-close>Catálogo</a>
+      <a class="nav-link" href="/#contacto" data-nav-close>Contacto</a>
+    </nav>
+  </div>
+  <div class="drawer-footer">
+    <a
+      class="btn btn-primary"
+      href={`https://wa.me/${siteContent.phoneRaw}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      style="width:100%;"
+    >
+      WhatsApp directo
+    </a>
+  </div>
+</aside>

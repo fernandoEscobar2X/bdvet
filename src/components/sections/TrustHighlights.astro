@@ -1,0 +1,125 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+
+const highlights = [
+  {
+    icon: "map-pin",
+    title: "Envios en Tijuana",
+    description: "Cobertura local para coordinar pedidos con mas claridad.",
+  },
+  {
+    icon: "whatsapp",
+    title: "Atencion por WhatsApp",
+    description: "Canal directo para resolver dudas, seguimiento y compra.",
+  },
+  {
+    icon: "shield",
+    title: "Asesoria veterinaria",
+    description: "Orientacion cercana para elegir mejor cada producto.",
+  },
+  {
+    icon: "package",
+    title: "Productos seleccionados",
+    description: "Curaduria inicial para perros y gatos desde una sola marca.",
+  },
+] as const;
+---
+<section class="trust-strip" aria-label="Puntos clave de confianza BorderVet">
+  <div class="container-shell">
+    <div class="trust-strip__shell">
+      {highlights.map((item) => (
+        <article class="trust-strip__item" data-reveal="up">
+          <span class="trust-strip__icon">
+            <Icon name={item.icon} size={18} />
+          </span>
+          <div>
+            <h2>{item.title}</h2>
+            <p>{item.description}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-strip {
+    position: relative;
+    z-index: 3;
+    margin-top: -2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .trust-strip__shell {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.9rem;
+    padding: 1rem;
+    border: 1px solid rgba(231, 223, 210, 0.8);
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 18px 44px rgba(17, 17, 17, 0.08);
+    backdrop-filter: blur(16px);
+  }
+
+  .trust-strip__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.95rem;
+    padding: 1rem 1.05rem;
+    border-radius: 1.4rem;
+    background:
+      linear-gradient(145deg, rgba(248, 246, 242, 0.96), rgba(255, 255, 255, 0.98));
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base);
+  }
+
+  .trust-strip__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(17, 17, 17, 0.08);
+  }
+
+  .trust-strip__icon {
+    display: inline-grid;
+    flex: 0 0 auto;
+    place-items: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 1rem;
+    background: rgba(30, 26, 71, 0.08);
+    color: var(--color-primary);
+  }
+
+  .trust-strip__item h2 {
+    margin: 0 0 0.32rem;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .trust-strip__item p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  @media (max-width: 1024px) {
+    .trust-strip__shell {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .trust-strip {
+      margin-top: -1rem;
+    }
+
+    .trust-strip__shell {
+      grid-template-columns: 1fr;
+      padding: 0.8rem;
+    }
+  }
+</style>

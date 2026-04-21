@@ -1,0 +1,83 @@
+---
+import "@/styles/catalog.css";
+
+import Icon from "@/components/ui/Icon.astro";
+---
+<div class="drawer-overlay" data-drawer-overlay data-open="false"></div>
+
+<aside
+  class="cart-drawer cart-drawer-premium drawer-reveal"
+  data-cart-drawer
+  data-drawer-panel
+  data-drawer-motion="css"
+  data-open="false"
+  data-ready="false"
+  aria-label="Carrito"
+>
+  <span class="cart-drawer-premium__backdrop" aria-hidden="true" data-drawer-backdrop></span>
+
+  <div class="drawer-header cart-drawer-premium__header" data-drawer-segment="header">
+    <div class="cart-drawer-premium__headline">
+      <div>
+        <span class="cart-drawer-premium__eyebrow">Pedido BorderVet</span>
+        <strong class="cart-drawer-premium__title">Tu carrito</strong>
+        <p class="cart-drawer-premium__copy">
+          Envia tu pedido por WhatsApp cuando estes listo.
+        </p>
+      </div>
+      <button class="icon-button cart-drawer-premium__close" type="button" aria-label="Cerrar carrito" data-cart-close>
+        ×
+      </button>
+    </div>
+  </div>
+
+  <div class="drawer-content cart-drawer-premium__content" data-drawer-segment="content">
+    <div class="cart-empty cart-drawer-premium__empty" data-cart-empty>
+      <div class="cart-drawer-premium__empty-icon">
+        <Icon name="paw" size={26} />
+      </div>
+      <div class="cart-drawer-premium__empty-copy">
+        <strong class="card-title">Tu carrito esta vacio</strong>
+        <p>Arma tu pedido desde el catalogo y lo enviamos por WhatsApp.</p>
+      </div>
+      <a href="/catalogo" class="btn btn-surface" data-cart-close>Ir al catalogo</a>
+    </div>
+
+    <div class="cart-drawer-premium__items" data-cart-content data-lenis-prevent></div>
+  </div>
+
+  <div
+    class="drawer-footer cart-drawer-premium__footer"
+    data-cart-footer
+    data-drawer-segment="footer"
+    hidden
+  >
+    <div class="cart-drawer-premium__assurance">
+      <span class="cart-drawer-premium__assurance-pill">Confirmamos por WhatsApp</span>
+      <span class="cart-drawer-premium__assurance-pill">Entrega en Tijuana</span>
+    </div>
+
+    <div class="drawer-total cart-drawer-premium__total">
+      <div>
+        <strong class="card-title" style="font-size:1rem;">Total estimado</strong>
+        <div class="cart-drawer-premium__subcopy">Se confirma por WhatsApp</div>
+      </div>
+      <strong class="cart-drawer-premium__subtotal" data-cart-subtotal>$0 MXN</strong>
+    </div>
+
+    <button
+      class="btn btn-primary cart-drawer-premium__checkout"
+      type="button"
+      data-cart-checkout
+    >
+      Enviar pedido por WhatsApp
+    </button>
+    <button
+      class="btn btn-link cart-drawer-premium__clear"
+      type="button"
+      data-clear-cart
+    >
+      Vaciar carrito
+    </button>
+  </div>
+</aside>

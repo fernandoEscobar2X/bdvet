@@ -1,0 +1,17 @@
+---
+const { text } = Astro.props as { text?: string | null };
+
+if (!text) {
+  return null;
+}
+
+const badgeClass =
+  text === "Oferta"
+    ? "badge badge-offer"
+    : text === "Top ventas"
+      ? "badge badge-top"
+      : text === "Nuevo"
+        ? "badge badge-new"
+        : "badge";
+---
+<span class={badgeClass}>{text}</span>

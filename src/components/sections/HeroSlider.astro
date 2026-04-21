@@ -1,0 +1,136 @@
+---
+import "@/styles/sections.css";
+
+import Button from "@/components/ui/Button.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { heroSlides } from "@/lib/content";
+
+type HeroTheme = "blue" | "cream" | "dark";
+type HeroDecor = string;
+type ButtonVariant = "primary" | "secondary" | "surface" | "dark" | "link";
+
+type HeroCta = {
+  label: string;
+  href: string;
+  variant: ButtonVariant;
+};
+
+type HeroSlide = {
+  id: string;
+  theme: HeroTheme;
+  eyebrow: string;
+  title: string;
+  description: string;
+  primaryCta: HeroCta;
+  secondaryCta?: HeroCta;
+  imageMain: string;
+  imageSecondary: string;
+  bgDecor: HeroDecor;
+  floatingBadges?: string[];
+};
+
+const isExternalHref = (href: string) => href.startsWith("http");
+const slides = heroSlides as HeroSlide[];
+const HERO_PLACEHOLDER = "/images/placeholders/hero-placeholder.svg";
+const BRAND_PLACEHOLDER = "/images/placeholders/brand-placeholder.svg";
+const getImageFallback = (src: string) =>
+  `this.onerror=null;this.src='${src.includes("/brand/") ? BRAND_PLACEHOLDER : HERO_PLACEHOLDER}'`;
+---
+<section
+  class="hero-premium"
+  aria-label="Hero principal de BorderVet"
+  data-hero-root
+  data-hero-mouse-target
+>
+  <div class="swiper hero-premium__swiper js-hero-swiper" data-hero-mode="css">
+    <div class="swiper-wrapper">
+      {slides.map((slide, index) => (
+        <article
+          class="swiper-slide hero-premium__slide"
+          data-theme={slide.theme}
+          data-decor={slide.bgDecor}
+          data-hero-slide={slide.id}
+        >
+          <div class="hero-premium__background" aria-hidden="true">
+            <span class="hero-premium__orb hero-premium__orb--one"></span>
+            <span class="hero-premium__orb hero-premium__orb--two"></span>
+            <span class="hero-premium__orb hero-premium__orb--three"></span>
+            <span class="hero-premium__grain"></span>
+          </div>
+
+          <div class="container-shell hero-premium__grid">
+            <div class="hero-premium__visual hero-premium__visual--main" data-hero-main-visual>
+              <div class="hero-premium__media-frame hero-premium__media-frame--main">
+                <img
+                  src={slide.imageMain}
+                  alt=""
+                  class="hero-premium__image hero-premium__image--main"
+                  data-hero-main-image
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchpriority={index === 0 ? "high" : undefined}
+                  decoding="async"
+                  onerror={getImageFallback(slide.imageMain)}
+                />
+              </div>
+            </div>
+
+            <div class="hero-premium__copy hero-text-stagger" data-hero-copy>
+              <span class="eyebrow hero-premium__eyebrow" data-hero-eyebrow>{slide.eyebrow}</span>
+              <h1 class="hero-premium__title" data-hero-title>{slide.title}</h1>
+              <p class="hero-premium__description" data-hero-description>{slide.description}</p>
+
+              <div class="hero-premium__actions" data-hero-actions>
+                <Button
+                  href={slide.primaryCta.href}
+                  variant={slide.primaryCta.variant}
+                  target={isExternalHref(slide.primaryCta.href) ? "_blank" : undefined}
+                >
+                  {slide.primaryCta.label}
+                </Button>
+
+                {slide.secondaryCta ? (
+                  <Button
+                    href={slide.secondaryCta.href}
+                    variant={slide.secondaryCta.variant}
+                    target={isExternalHref(slide.secondaryCta.href) ? "_blank" : undefined}
+                  >
+                    {slide.secondaryCta.label}
+                  </Button>
+                ) : null}
+              </div>
+            </div>
+
+            <aside class="hero-premium__visual hero-premium__visual--support" data-hero-support-visual>
+              <div class="hero-premium__media-frame hero-premium__media-frame--support">
+                <img
+                  src={slide.imageSecondary}
+                  alt=""
+                  class="hero-premium__image hero-premium__image--support"
+                  data-hero-support-image
+                  loading="lazy"
+                  decoding="async"
+                  onerror={getImageFallback(slide.imageSecondary)}
+                />
+              </div>
+
+              {slide.floatingBadges?.length ? (
+                <div class="hero-premium__badges" aria-label="Puntos clave del slide" data-hero-badges>
+                  {slide.floatingBadges.map((badge: string) => (
+                    <span class="hero-premium__badge">
+                      <Icon name="sparkles" size={14} />
+                      <span>{badge}</span>
+                    </span>
+                  ))}
+                </div>
+              ) : null}
+            </aside>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="hero-premium__controls">
+      <div class="swiper-pagination swiper-pagination-shell hero-premium__pagination"></div>
+    </div>
+  </div>
+</section>

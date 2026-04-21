@@ -1,0 +1,417 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+
+const categoryCards = [
+  {
+    title: "Perros",
+    description: "Alimento por etapa, snacks y esenciales para cada raza y tamano.",
+    href: "/catalogo?categoria=perros",
+    image: "/images/products/royal-canin-medium.svg",
+    badge: "Mas vendido",
+    tone: "blue",
+    size: "wide",
+  },
+  {
+    title: "Gatos",
+    description: "Alimento, arena y cuidado especifico para la vida indoor.",
+    href: "/catalogo?categoria=gatos",
+    image: "/images/products/purina-gato.svg",
+    badge: "Vida indoor",
+    tone: "cream",
+    size: "tall",
+  },
+  {
+    title: "Higiene y cuidado",
+    description: "Antiparasitarios, champu y productos clinicos con respaldo veterinario.",
+    href: "/catalogo",
+    image: "/images/products/seresto-collar.svg",
+    badge: "Cuidado clinico",
+    tone: "white",
+    size: "standard",
+  },
+  {
+    title: "Alimento premium",
+    description: "Royal Canin, Hill's y formulas especificas por etapa o condicion.",
+    href: "/catalogo",
+    image: "/images/products/hills-kitten.svg",
+    badge: "Top marcas",
+    tone: "dark",
+    size: "wide",
+  },
+] as const;
+const CATEGORY_PLACEHOLDER = "/images/placeholders/category-placeholder.svg";
+const categoryFallback = `this.onerror=null;this.src='${CATEGORY_PLACEHOLDER}'`;
+---
+<section class="featured-categories section-block" aria-labelledby="featured-categories-title">
+  <div class="container-shell">
+    <div class="featured-categories__intro" data-reveal="up">
+      <span class="eyebrow">Categorias destacadas</span>
+      <h2 id="featured-categories-title" class="featured-categories__title">
+        Cuidado premium para perros y gatos, organizado por necesidad
+      </h2>
+      <p class="featured-categories__description">
+        Alimento, higiene y productos clinicos con respaldo veterinario. Una seleccion clara para resolver rapido, sin vueltas ni confusion.
+      </p>
+    </div>
+
+    <div class="featured-categories__grid">
+      {categoryCards.map((card) => {
+        const parallaxDirection =
+          card.size === "wide" ? "right" : card.size === "tall" ? "up" : "left";
+        return (
+        <a
+          class={`featured-categories__card featured-categories__card--${card.size}`}
+          data-tone={card.tone}
+          href={card.href}
+          data-reveal="up"
+          data-reveal-st
+          data-parallax-direction={parallaxDirection}
+          data-category-card
+        >
+          <span class="featured-categories__badge">{card.badge}</span>
+
+          <div class="featured-categories__media">
+            <img
+              src={card.image}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              width="420"
+              height="420"
+              onerror={categoryFallback}
+            />
+          </div>
+
+          <div class="featured-categories__overlay"></div>
+
+          <div class="featured-categories__content">
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+            <span class="featured-categories__link">
+              <span>Explorar</span>
+              <Icon name="arrow-right" size={18} />
+            </span>
+          </div>
+        </a>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<style>
+  .featured-categories {
+    position: relative;
+    padding-top: 0.5rem;
+  }
+
+  .featured-categories__intro {
+    max-width: 46rem;
+    margin-bottom: 2rem;
+  }
+
+  .featured-categories__title {
+    margin: 0.95rem 0 1rem;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: clamp(2.1rem, 4vw, 3.45rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .featured-categories__description {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 1.02rem;
+    line-height: 1.8;
+  }
+
+  .featured-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .featured-categories__card {
+    position: relative;
+    display: flex;
+    min-height: 23.5rem;
+    overflow: visible;
+    border-radius: 2rem;
+    text-decoration: none;
+    isolation: isolate;
+    --category-shift-x: 0px;
+    --category-shift-y: 0px;
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+    will-change: transform;
+  }
+
+  .featured-categories__card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border: 1px solid rgba(231, 223, 210, 0.82);
+    border-radius: 2rem;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform var(--transition-base),
+      box-shadow var(--transition-base),
+      border-color var(--transition-base);
+  }
+
+  .featured-categories__card::after {
+    content: "";
+    position: absolute;
+    inset: auto auto 8% 10%;
+    width: 36%;
+    height: 36%;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at var(--category-glow-x, 50%) var(--category-glow-y, 40%), rgba(255, 255, 255, 0.54), transparent 48%),
+      radial-gradient(circle, rgba(255, 255, 255, 0.48), transparent 68%);
+    opacity: 0.55;
+    pointer-events: none;
+    transition: transform var(--transition-slow), opacity var(--transition-base);
+  }
+
+  .featured-categories__card:hover {
+    transform: translate3d(0, -6px, 0);
+    z-index: 2;
+  }
+
+  .featured-categories__card:hover::before {
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(191, 136, 87, 0.4);
+    transform: translate3d(0, 0, 0) scale(1.01);
+  }
+
+  .featured-categories__card:hover::after {
+    opacity: 0.85;
+    transform: translate3d(16px, -10px, 0) scale(1.08);
+  }
+
+  .featured-categories__card:active {
+    transform: translate3d(0, -2px, 0) scale(0.995);
+    transition-duration: 110ms;
+  }
+
+  .featured-categories__card--wide {
+    grid-column: span 7;
+  }
+
+  .featured-categories__card--tall {
+    grid-column: span 5;
+    grid-row: span 2;
+    min-height: 46rem;
+  }
+
+  .featured-categories__card--standard {
+    grid-column: span 5;
+  }
+
+  .featured-categories__card[data-tone="blue"] {
+    background: none;
+  }
+
+  .featured-categories__card[data-tone="cream"] {
+    background: none;
+  }
+
+  .featured-categories__card[data-tone="white"] {
+    background: none;
+  }
+
+  .featured-categories__card[data-tone="dark"] {
+    background: none;
+  }
+
+  .featured-categories__card[data-tone="blue"]::before {
+    background:
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.42), transparent 18rem),
+      linear-gradient(145deg, rgba(224, 242, 255, 0.92), rgba(255, 255, 255, 0.98));
+  }
+
+  .featured-categories__card[data-tone="cream"]::before {
+    background:
+      radial-gradient(circle at top left, rgba(255, 196, 70, 0.16), transparent 14rem),
+      linear-gradient(160deg, rgba(247, 239, 228, 0.94), rgba(255, 255, 255, 0.98));
+  }
+
+  .featured-categories__card[data-tone="white"]::before {
+    background:
+      radial-gradient(circle at top right, rgba(191, 136, 87, 0.08), transparent 12rem),
+      linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(248, 246, 242, 0.96));
+  }
+
+  .featured-categories__card[data-tone="dark"]::before {
+    background:
+      radial-gradient(circle at top right, rgba(191, 136, 87, 0.26), transparent 32%),
+      linear-gradient(145deg, rgba(30, 26, 71, 1), rgba(22, 18, 56, 1));
+  }
+
+  .featured-categories__badge {
+    position: absolute;
+    top: 1.15rem;
+    left: 1.15rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.58rem 0.9rem;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    box-shadow: 0 12px 28px rgba(17, 17, 17, 0.08);
+  }
+
+  .featured-categories__media {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    align-items: end;
+    justify-items: end;
+    padding: 0.5rem 0.2rem 0;
+    overflow: visible;
+  }
+
+  .featured-categories__media img {
+    width: min(90%, 25rem);
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 28px 54px rgba(17, 17, 17, 0.2));
+    transform: translate3d(calc(12% + var(--category-shift-x)), calc(10% + var(--category-shift-y)), 0) scale(1.02);
+    transition:
+      transform 900ms var(--ease-premium),
+      filter 900ms var(--ease-premium);
+    transform-origin: center bottom;
+  }
+
+  .featured-categories__card:hover .featured-categories__media img {
+    transform: translate3d(calc(15% + var(--category-shift-x)), calc(4% + var(--category-shift-y)), 0) scale(1.08) rotate(-1.2deg);
+    filter: drop-shadow(0 34px 64px rgba(17, 17, 17, 0.22));
+  }
+
+  .featured-categories__card--wide .featured-categories__media img {
+    width: min(88%, 27rem);
+    transform: translate3d(calc(14% + var(--category-shift-x)), calc(12% + var(--category-shift-y)), 0) scale(1.02);
+  }
+
+  .featured-categories__card--tall .featured-categories__media img {
+    width: min(96%, 27rem);
+    transform: translate3d(calc(20% + var(--category-shift-x)), calc(4% + var(--category-shift-y)), 0) scale(1.02);
+  }
+
+  .featured-categories__card--standard .featured-categories__media img {
+    width: min(82%, 23rem);
+    transform: translate3d(calc(14% + var(--category-shift-x)), calc(14% + var(--category-shift-y)), 0) scale(1.02);
+  }
+
+  .featured-categories__overlay {
+    position: absolute;
+    inset: auto 0 0;
+    height: 70%;
+    background:
+      linear-gradient(180deg, rgba(17, 17, 17, 0), rgba(17, 17, 17, 0.08) 28%, rgba(17, 17, 17, 0.42));
+    z-index: 1;
+    border-radius: 0 0 2rem 2rem;
+  }
+
+  .featured-categories__content {
+    position: relative;
+    z-index: 2;
+    align-self: flex-end;
+    width: 100%;
+    padding: 1.65rem;
+    color: var(--color-heading);
+    transform: translate3d(0, 0, 0);
+    transition: transform var(--transition-base);
+  }
+
+  .featured-categories__card:hover .featured-categories__content {
+    transform: translate3d(0, -4px, 0);
+  }
+
+  .featured-categories__content h3 {
+    margin: 0 0 0.65rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.45rem, 2vw, 2rem);
+    line-height: 1.05;
+  }
+
+  .featured-categories__content p {
+    margin: 0;
+    max-width: 24rem;
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: rgba(17, 17, 17, 0.78);
+  }
+
+  .featured-categories__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1rem;
+    font-weight: 700;
+    color: currentColor;
+  }
+
+  .featured-categories__link svg {
+    transition: transform var(--motion-hover, 200ms cubic-bezier(0.22, 1, 0.36, 1));
+  }
+
+  .featured-categories__card:hover .featured-categories__link svg {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  .featured-categories__card[data-tone="dark"] .featured-categories__badge {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+
+  .featured-categories__card[data-tone="dark"] .featured-categories__content,
+  .featured-categories__card[data-tone="dark"] .featured-categories__content p {
+    color: #ffffff;
+  }
+
+  @media (max-width: 980px) {
+    .featured-categories__card--wide,
+    .featured-categories__card--tall,
+    .featured-categories__card--standard {
+      grid-column: span 6;
+      grid-row: auto;
+      min-height: 24rem;
+    }
+
+    .featured-categories__card--wide .featured-categories__media img,
+    .featured-categories__card--tall .featured-categories__media img,
+    .featured-categories__card--standard .featured-categories__media img {
+      width: min(82%, 24rem);
+      transform: translate3d(calc(12% + var(--category-shift-x)), calc(8% + var(--category-shift-y)), 0) scale(1.02);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .featured-categories__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-categories__card--wide,
+    .featured-categories__card--tall,
+    .featured-categories__card--standard {
+      grid-column: auto;
+      min-height: 20rem;
+    }
+
+    .featured-categories__content {
+      padding: 1.25rem;
+    }
+  }
+</style>

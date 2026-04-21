@@ -1,0 +1,32 @@
+---
+interface Props {
+  variant?: "header" | "surface" | "footer";
+  alt?: string;
+}
+
+const { variant = "surface", alt = "BorderVet Farmacia Veterinaria" } =
+  Astro.props as Props;
+
+const isHeader = variant === "header";
+const src = isHeader
+  ? "/images/brand/logo-bordervet-transparent.png"
+  : "/images/brand/logo-bordervet-white.png";
+const BRAND_PLACEHOLDER = "/images/placeholders/brand-placeholder.svg";
+const brandFallback = `this.onerror=null;this.src='${BRAND_PLACEHOLDER}'`;
+const dimensions = isHeader
+  ? { width: 1024, height: 1536 }
+  : { width: 1536, height: 1024 };
+---
+
+<span class:list={["brand-logo-wrap", `brand-logo-wrap--${variant}`]}>
+  <img
+    src={src}
+    alt={alt}
+    width={dimensions.width}
+    height={dimensions.height}
+    class:list={["brand-logo", `brand-logo--${variant}`]}
+    loading={isHeader ? "eager" : "lazy"}
+    decoding="async"
+    onerror={brandFallback}
+  />
+</span>

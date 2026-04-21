@@ -1,0 +1,22 @@
+---
+import "@/styles/catalog.css";
+
+import ProductCard from "@/components/catalog/ProductCard.astro";
+import type { Product } from "@/domain/product";
+
+type Props = {
+  products: Product[];
+  compact?: boolean;
+};
+
+const { products, compact = false } = Astro.props as Props;
+---
+<div class="catalog-grid-shell" data-compact={compact ? "true" : "false"}>
+  <div class="catalog-grid" data-compact={compact ? "true" : "false"}>
+    {products.map((product) => (
+      <div class="catalog-grid__item" data-reveal="up" data-reveal-st>
+        <ProductCard product={product} />
+      </div>
+    ))}
+  </div>
+</div>

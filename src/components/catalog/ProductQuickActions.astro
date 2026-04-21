@@ -1,0 +1,23 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+
+type Props = {
+  slug: string;
+  productId: string;
+};
+
+const { slug, productId } = Astro.props as Props;
+---
+<div class="catalog-card__quick-layer">
+  <a class="catalog-card__quick-link" href={`/producto/${slug}`}>
+    <span>Ver detalle</span>
+    <Icon name="arrow-right" size={15} />
+  </a>
+</div>
+
+<div class="catalog-card__cta-row">
+  <button class="btn btn-primary catalog-card__cta-button" type="button" data-add-to-cart={productId}>
+    <Icon name="cart" size={16} />
+    <span>Agregar al carrito</span>
+  </button>
+</div>

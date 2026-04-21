@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" fill="none">
+  <rect width="800" height="800" fill="#F4F8FB"/>
+  <rect x="176" y="124" width="448" height="552" rx="44" fill="#fff" stroke="#D9E2EA" stroke-width="8"/>
+  <circle cx="400" cy="320" r="112" fill="#DCCFB7"/>
+  <path d="M332 470h136" stroke="#17324D" stroke-width="16" stroke-linecap="round"/>
+  <path d="M298 514h204" stroke="#76A83C" stroke-width="12" stroke-linecap="round"/>
+  <text x="268" y="586" fill="#17324D" font-family="Arial, sans-serif" font-size="36">PURINA PRO PLAN</text>
+  <text x="328" y="632" fill="#76A83C" font-family="Arial, sans-serif" font-size="32">GATO ADULTO</text>
+</svg>

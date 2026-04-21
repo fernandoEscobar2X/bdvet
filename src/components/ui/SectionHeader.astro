@@ -1,0 +1,16 @@
+---
+type Props = {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: "center" | "left";
+};
+
+const { eyebrow, title, description, align = "center" } = Astro.props as Props;
+const alignStyle = align === "left" ? "text-align:left;margin-inline:0;" : "";
+---
+<div class="section-header" style={alignStyle} data-reveal="up">
+  <span class="eyebrow">{eyebrow}</span>
+  <h2 class="section-title">{title}</h2>
+  {description && <p class="section-subtitle">{description}</p>}
+</div>

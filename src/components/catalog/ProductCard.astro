@@ -1,0 +1,76 @@
+---
+import "@/styles/catalog.css";
+
+import ProductBadgeStack from "@/components/catalog/ProductBadgeStack.astro";
+import type { Product } from "@/domain/product";
+
+type Props = {
+  product: Product;
+};
+
+const { product } = Astro.props as Props;
+const PRODUCT_PLACEHOLDER = "/images/placeholders/product-placeholder.svg";
+const productFallback = `this.onerror=null;this.src='${PRODUCT_PLACEHOLDER}'`;
+const speciesLabel =
+  product.species === "dog" ? "Perro" : product.species === "cat" ? "Gato" : "Perro y gato";
+const detailHighlights = product.detalles.slice(0, 2);
+---
+<article class="catalog-card" data-product-card data-category={product.categoria}>
+  <div class="catalog-card__stage">
+    <a class="catalog-card__media" href={`/producto/${product.slug}`} aria-label={`Ver detalle de ${product.nombre}`}>
+      <ProductBadgeStack category={product.categoria} speciesLabel={speciesLabel} badge={product.badge} />
+
+        <img
+          class="catalog-card__image"
+          src={product.imagen}
+          alt={product.nombre}
+          loading="lazy"
+          onerror={productFallback}
+        />
+    </a>
+
+    <div class="catalog-card__quick-layer">
+      <button
+        class="btn btn-primary catalog-card__quick-add"
+        type="button"
+        data-add-to-cart={product.id}
+        aria-label={`Agregar ${product.nombre} al carrito`}
+      >
+        Agregar rapido
+      </button>
+
+      <a class="catalog-card__quick-link" href={`/producto/${product.slug}`}>
+        <span>Ver detalle</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="catalog-card__body">
+    <div class="catalog-card__meta">
+      <span class="catalog-card__brand">{product.marca}</span>
+      <h3 class="catalog-card__title">
+        <a href={`/producto/${product.slug}`}>{product.nombre}</a>
+      </h3>
+    </div>
+
+    <div class="catalog-card__details" aria-label="Detalles rapidos del producto">
+      {detailHighlights.map((detail) => (
+        <span class="catalog-card__detail">{detail}</span>
+      ))}
+    </div>
+
+    <div class="catalog-card__footer">
+      <div class="catalog-card__price-block">
+        <div class="catalog-card__price-row">
+          <span class="catalog-card__price">${product.precio.toLocaleString("es-MX")} MXN</span>
+          {product.precioOriginal ? (
+            <span class="catalog-card__price-old">
+              ${product.precioOriginal.toLocaleString("es-MX")} MXN
+            </span>
+          ) : null}
+        </div>
+        <span class="catalog-card__microcopy">Compra simple con cierre por WhatsApp</span>
+      </div>
+    </div>
+  </div>
+</article>

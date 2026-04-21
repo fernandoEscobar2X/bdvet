@@ -1,0 +1,32 @@
+[
+  {
+    "id": "consulta-whatsapp",
+    "nombre": "Consulta por WhatsApp",
+    "precio": 150,
+    "duracion": "Respuesta en horario de atención",
+    "descripcion": "Perfecta para resolver dudas, revisar fotos o videos y orientar el siguiente paso para tu mascota.",
+    "bullets": [
+      "Ideal para dudas frecuentes",
+      "Seguimiento rápido",
+      "Canal directo con el veterinario"
+    ],
+    "ctaType": "whatsapp",
+    "ctaLabel": "Agendar por WhatsApp",
+    "ctaTarget": "https://wa.me/526641234567?text=Hola%20BorderVet%2C%20quiero%20agendar%20una%20consulta%20por%20WhatsApp"
+  },
+  {
+    "id": "videoconsulta",
+    "nombre": "Videoconsulta",
+    "precio": 300,
+    "duracion": "30 minutos",
+    "descripcion": "Una sesión guiada para revisar síntomas, responder preguntas y orientar cuidados o tratamiento inicial.",
+    "bullets": [
+      "Más formal y estructurada",
+      "Ideal para seguimiento",
+      "Calendario de disponibilidad"
+    ],
+    "ctaType": "calendly",
+    "ctaLabel": "Abrir Calendly",
+    "ctaTarget": "https://calendly.com/bordervet/consulta"
+  }
+]

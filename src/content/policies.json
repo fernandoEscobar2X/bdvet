@@ -1,0 +1,42 @@
+{
+  "privacy": {
+    "title": "Aviso de privacidad",
+    "intro": "En BorderVet cuidamos la información de nuestros clientes y visitantes con la misma atención con la que cuidamos la experiencia del sitio.",
+    "sections": [
+      {
+        "heading": "Datos que recopilamos",
+        "paragraphs": [
+          "Podemos recibir nombre, teléfono, correo y datos compartidos voluntariamente por WhatsApp, formularios o contacto directo.",
+          "La información se usa únicamente para atención comercial, consulta veterinaria y seguimiento de pedidos."
+        ]
+      },
+      {
+        "heading": "Uso de la información",
+        "paragraphs": [
+          "Utilizamos tus datos para responder solicitudes, coordinar consultas, resolver pedidos y mejorar la experiencia general de BorderVet.",
+          "No vendemos ni compartimos tu información con terceros ajenos al servicio."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "title": "Términos de servicio",
+    "intro": "El uso de este sitio implica la aceptación de estos términos básicos para consulta, navegación y pedidos por WhatsApp.",
+    "sections": [
+      {
+        "heading": "Pedidos y disponibilidad",
+        "paragraphs": [
+          "Los pedidos enviados por WhatsApp quedan sujetos a confirmación de disponibilidad, precio final y logística de entrega.",
+          "La información mostrada en la V1 del catálogo es orientativa y puede actualizarse sin previo aviso."
+        ]
+      },
+      {
+        "heading": "Consulta veterinaria",
+        "paragraphs": [
+          "La asesoría virtual no sustituye una atención clínica presencial cuando exista urgencia o riesgo para la mascota.",
+          "BorderVet podrá recomendar visita inmediata, estudios o evaluación presencial según el caso."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "review-maria",
+    "nombre": "María G.",
+    "texto": "Pedí alimento y antiparasitarios para mi perro y la experiencia fue muy rápida. Se siente como una tienda premium, pero con atención cercana.",
+    "rating": 5,
+    "mascota": "Max · Labrador",
+    "ubicacion": "Tijuana",
+    "source": "curated"
+  },
+  {
+    "id": "review-roberto",
+    "nombre": "Roberto T.",
+    "texto": "La consulta virtual fue clara y práctica. Me orientaron por WhatsApp y no tuve que mover a mi gata innecesariamente.",
+    "rating": 5,
+    "mascota": "Luna · Siamés",
+    "ubicacion": "Tijuana",
+    "source": "curated"
+  },
+  {
+    "id": "review-andrea",
+    "nombre": "Andrea P.",
+    "texto": "Me gustó mucho la forma en que explican los productos y la confianza que transmite la página. Todo se siente bien cuidado.",
+    "rating": 5,
+    "mascota": "Koda · Golden",
+    "ubicacion": "Tijuana",
+    "source": "curated"
+  }
+]

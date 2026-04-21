@@ -1,0 +1,294 @@
+/* ==========================================================================
+   MOTION SYSTEM — BorderVet
+   Organizado en:
+   1) Reveals        — entrada por scroll
+   2) Hover          — respuesta al puntero
+   3) Shell          — header, drawer, overlay
+   4) Slider         — hero y carousels
+   5) Utility states — is-visible, is-entering, is-active
+
+   Tiempos:
+     hover    180–220ms
+     reveals  300–420ms
+     shell    450–650ms
+     stagger  60–90ms
+   ========================================================================== */
+
+:root {
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --motion-ease-shell: cubic-bezier(0.2, 0.9, 0.3, 1);
+
+  --motion-hover: 200ms var(--motion-ease);
+  --motion-reveal: 480ms var(--motion-ease);
+  --motion-shell: 620ms var(--motion-ease-shell);
+  --motion-stagger: 75ms;
+}
+
+/* ==========================================================================
+   1) REVEALS
+   ========================================================================== */
+
+[data-reveal] {
+  --reveal-x: 0px;
+  --reveal-y: 22px;
+  --reveal-scale: 0.985;
+  --reveal-rotate: 0deg;
+  --reveal-duration: 520ms;
+  --motion-stagger-local: var(--motion-stagger);
+  opacity: 0;
+  transform:
+    translate3d(var(--reveal-x), var(--reveal-y), 0)
+    scale(var(--reveal-scale))
+    rotate(var(--reveal-rotate));
+  transition:
+    opacity var(--reveal-duration) var(--motion-ease),
+    transform var(--reveal-duration) var(--motion-ease);
+  will-change: opacity, transform;
+}
+
+[data-reveal="left"]  { --reveal-x: -28px; --reveal-y: 0px; }
+[data-reveal="right"] { --reveal-x: 28px; --reveal-y: 0px; }
+[data-reveal="up"]    { --reveal-y: 24px; }
+[data-reveal="down"]  { --reveal-y: -18px; }
+[data-reveal="scale"] { --reveal-scale: 0.965; --reveal-y: 16px; }
+
+[data-reveal].reveal-soft {
+  --reveal-y: 16px;
+  --reveal-scale: 0.992;
+  --reveal-duration: 440ms;
+}
+
+[data-reveal].reveal-strong {
+  --reveal-y: 28px;
+  --reveal-scale: 0.978;
+  --reveal-duration: 600ms;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+}
+
+.reveal-delay-1 { transition-delay: 80ms; }
+.reveal-delay-2 { transition-delay: 160ms; }
+.reveal-delay-3 { transition-delay: 240ms; }
+
+[data-stagger] {
+  transition-delay: calc(var(--stagger-index, 0) * var(--motion-stagger-local));
+}
+
+/* ==========================================================================
+   2) HOVER
+   ========================================================================== */
+
+.card-lift {
+  transition:
+    transform var(--motion-hover),
+    box-shadow var(--motion-hover),
+    border-color var(--motion-hover);
+  will-change: transform;
+}
+
+.card-lift:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-hover);
+}
+
+.card-lift:active {
+  transform: translate3d(0, -1px, 0) scale(0.995);
+  transition-duration: 110ms;
+}
+
+.image-zoom {
+  overflow: hidden;
+}
+
+.image-zoom img,
+.image-zoom svg {
+  transition: transform 620ms var(--motion-ease);
+  will-change: transform;
+}
+
+.image-zoom:hover img,
+.image-zoom:hover svg {
+  transform: scale(1.045);
+}
+
+.button-press {
+  transition:
+    transform var(--motion-hover),
+    box-shadow var(--motion-hover),
+    background-color var(--motion-hover),
+    color var(--motion-hover),
+    border-color var(--motion-hover);
+}
+
+.button-press:active {
+  transform: translate3d(0, 0, 0) scale(0.975);
+  transition-duration: 90ms;
+}
+
+.icon-slide > svg,
+.icon-slide svg {
+  transition: transform var(--motion-hover);
+}
+
+.icon-slide:hover > svg,
+.icon-slide:hover svg,
+a:hover > .icon-slide svg,
+button:hover > .icon-slide svg {
+  transform: translate3d(3px, 0, 0);
+}
+
+/* ==========================================================================
+   3) SHELL
+   ========================================================================== */
+
+.header-transform {
+  transition:
+    background-color var(--motion-shell),
+    box-shadow var(--motion-shell),
+    backdrop-filter var(--motion-shell),
+    border-color var(--motion-shell);
+  will-change: background-color, box-shadow, backdrop-filter;
+}
+
+.menu-reveal,
+.drawer-reveal {
+  transform: translate3d(100%, 0, 0);
+  transition: transform var(--motion-shell);
+  will-change: transform;
+}
+
+.menu-reveal[data-open="true"],
+.drawer-reveal[data-drawer-motion="css"][data-open="true"] {
+  transform: translate3d(0, 0, 0);
+}
+
+[data-drawer-segment] {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 380ms var(--motion-ease),
+    transform 460ms var(--motion-ease);
+}
+
+[data-drawer-motion="css"][data-open="true"][data-ready="true"] [data-drawer-segment] {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+[data-drawer-motion="css"][data-open="true"][data-ready="true"] [data-drawer-segment="header"] {
+  transition-delay: 90ms;
+}
+
+[data-drawer-motion="css"][data-open="true"][data-ready="true"] [data-drawer-segment="content"] {
+  transition-delay: 150ms;
+}
+
+[data-drawer-motion="css"][data-open="true"][data-ready="true"] [data-drawer-segment="footer"] {
+  transition-delay: 220ms;
+}
+
+/* ==========================================================================
+   4) SLIDER
+   ========================================================================== */
+
+.hero-premium__swiper[data-hero-mode="css"] .hero-text-stagger > * {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+  transition:
+    opacity 620ms var(--motion-ease),
+    transform 620ms var(--motion-ease);
+}
+
+.hero-premium__swiper[data-hero-mode="css"] .swiper-slide-active .hero-text-stagger > :nth-child(1),
+.hero-premium__swiper[data-hero-mode="css"] .is-entering .hero-text-stagger > :nth-child(1) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 120ms;
+}
+
+.hero-premium__swiper[data-hero-mode="css"] .swiper-slide-active .hero-text-stagger > :nth-child(2),
+.hero-premium__swiper[data-hero-mode="css"] .is-entering .hero-text-stagger > :nth-child(2) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 210ms;
+}
+
+.hero-premium__swiper[data-hero-mode="css"] .swiper-slide-active .hero-text-stagger > :nth-child(3),
+.hero-premium__swiper[data-hero-mode="css"] .is-entering .hero-text-stagger > :nth-child(3) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 300ms;
+}
+
+.hero-premium__swiper[data-hero-mode="css"] .swiper-slide-active .hero-text-stagger > :nth-child(n+4),
+.hero-premium__swiper[data-hero-mode="css"] .is-entering .hero-text-stagger > :nth-child(n+4) {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition-delay: 380ms;
+}
+
+.arrow-hover {
+  transition:
+    transform var(--motion-hover),
+    background-color var(--motion-hover),
+    box-shadow var(--motion-hover),
+    border-color var(--motion-hover),
+    color var(--motion-hover);
+}
+
+.arrow-hover:hover {
+  transform: translate3d(0, -2px, 0);
+}
+
+.arrow-hover:active {
+  transform: translate3d(0, 0, 0) scale(0.97);
+  transition-duration: 100ms;
+}
+
+/* ==========================================================================
+   5) UTILITY STATES
+   ========================================================================== */
+
+.is-entering {
+  animation: motion-fade-scale-in 420ms var(--motion-ease) both;
+}
+
+@keyframes motion-fade-scale-in {
+  from { opacity: 0; transform: scale(0.985); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.is-active {
+  outline: none;
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal],
+  [data-reveal="left"],
+  [data-reveal="right"],
+  [data-reveal="up"],
+  [data-reveal="down"],
+  [data-reveal="scale"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-stagger] { transition-delay: 0ms; }
+}

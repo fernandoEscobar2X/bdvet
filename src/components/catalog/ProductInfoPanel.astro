@@ -1,0 +1,73 @@
+---
+import Button from "@/components/ui/Button.astro";
+import Icon from "@/components/ui/Icon.astro";
+import ProductAccordion from "@/components/catalog/ProductAccordion.astro";
+import type { Product } from "@/domain/product";
+
+type Props = {
+  product: Product;
+  whatsappHref: string;
+};
+
+const { product, whatsappHref } = Astro.props as Props;
+const speciesLabel =
+  product.species === "dog" ? "Perro" : product.species === "cat" ? "Gato" : "Perro y gato";
+---
+<article class="product-info-panel" data-reveal="left">
+  <div class="product-info-panel__header">
+    <div class="product-info-panel__meta">
+      <span class="product-info-panel__brand">{product.marca}</span>
+      <div class="product-info-panel__chips">
+        <span class="product-info-panel__chip">{product.categoria}</span>
+        <span class="product-info-panel__chip product-info-panel__chip--ghost">{speciesLabel}</span>
+      </div>
+    </div>
+
+    <h1 class="product-info-panel__title">{product.nombre}</h1>
+  </div>
+
+  <div class="product-info-panel__price-block">
+    <div class="product-info-panel__price-row">
+      <span class="product-info-panel__price">${product.precio.toLocaleString("es-MX")} MXN</span>
+      {product.precioOriginal ? (
+        <span class="product-info-panel__price-old">
+          ${product.precioOriginal.toLocaleString("es-MX")} MXN
+        </span>
+      ) : null}
+    </div>
+
+    <div class="product-info-panel__trust-list" aria-label="Puntos de confianza del producto">
+      <span>
+        <Icon name="shield" size={15} />
+        <span>Recomendado por veterinario</span>
+      </span>
+      <span>
+        <Icon name="message" size={15} />
+        <span>Consulta disponibilidad por WhatsApp</span>
+      </span>
+      <span>
+        <Icon name="map-pin" size={15} />
+        <span>Entrega local y asesoria disponible</span>
+      </span>
+    </div>
+  </div>
+
+  <p class="product-info-panel__lead">{product.descripcion}</p>
+
+  <div class="product-info-panel__actions">
+    <button class="btn btn-primary product-info-panel__cta" type="button" data-add-to-cart={product.id}>
+      <Icon name="cart" size={16} />
+      <span>Agregar al carrito</span>
+    </button>
+    <Button href={whatsappHref} target="_blank" variant="surface">
+      Consultar por WhatsApp
+    </Button>
+  </div>
+
+  <p class="product-info-panel__microcopy">
+    Pedido simple, sin checkout complejo. BorderVet confirma por WhatsApp los siguientes pasos,
+    disponibilidad y entrega.
+  </p>
+
+  <ProductAccordion product={product} />
+</article>

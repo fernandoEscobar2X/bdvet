@@ -1,0 +1,21 @@
+---
+import { siteContent } from "@/lib/content";
+
+const trustMessages = siteContent.announcement
+  .split("·")
+  .map((message) => message.trim())
+  .filter(Boolean)
+  .slice(0, 3);
+---
+<div class="announcement-bar" aria-label="Mensajes de confianza">
+  <div class="container-shell announcement-bar__inner">
+    {trustMessages.map((message, index) => (
+      <>
+        <span class="announcement-bar__item">{message}</span>
+        {index < trustMessages.length - 1 ? (
+          <span class="announcement-bar__separator" aria-hidden="true"></span>
+        ) : null}
+      </>
+    ))}
+  </div>
+</div>

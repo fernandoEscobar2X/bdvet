@@ -1,0 +1,77 @@
+[
+  {
+    "id": "hero-storefront",
+    "theme": "blue",
+    "eyebrow": "BorderVet petcare",
+    "title": "Todo para el cuidado de tu mascota",
+    "description": "Catalogo curado de productos para perros y gatos con una experiencia visual confiable, cercana y lista para vender mejor.",
+    "primaryCta": {
+      "label": "Ver catalogo",
+      "href": "/catalogo",
+      "variant": "primary"
+    },
+    "secondaryCta": {
+      "label": "Pedir asesoria",
+      "href": "#asesoria",
+      "variant": "surface"
+    },
+    "imageMain": "/images/hero/hero-products.svg",
+    "imageSecondary": "/images/hero/about-visual.svg",
+    "bgDecor": "waves",
+    "floatingBadges": [
+      "Productos seleccionados",
+      "Atencion cercana",
+      "Confianza veterinaria"
+    ]
+  },
+  {
+    "id": "hero-virtual-care",
+    "theme": "cream",
+    "eyebrow": "Asesoria virtual",
+    "title": "Asesoria veterinaria sin salir de casa",
+    "description": "Habla con el medico por WhatsApp y recibe orientacion clara para decidir el siguiente paso de tu mascota sin complicaciones.",
+    "primaryCta": {
+      "label": "Abrir WhatsApp",
+      "href": "https://wa.me/526641234567?text=Hola%20BorderVet%2C%20quiero%20pedir%20asesoria",
+      "variant": "primary"
+    },
+    "secondaryCta": {
+      "label": "Ver contacto",
+      "href": "#contacto",
+      "variant": "surface"
+    },
+    "imageMain": "/images/hero/hero-consultation.svg",
+    "imageSecondary": "/images/brand/logo-bordervet-transparent.png",
+    "bgDecor": "soft-orb",
+    "floatingBadges": [
+      "Respuesta agil",
+      "Canal directo",
+      "Acompanamiento real"
+    ]
+  },
+  {
+    "id": "hero-product-selection",
+    "theme": "dark",
+    "eyebrow": "Seleccion destacada",
+    "title": "Productos elegidos para perros y gatos",
+    "description": "Desde alimento premium hasta esenciales de cuidado diario, explora una seleccion pensada para compra rapida y decisiones con mas confianza.",
+    "primaryCta": {
+      "label": "Explorar destacados",
+      "href": "/catalogo",
+      "variant": "primary"
+    },
+    "secondaryCta": {
+      "label": "Contactar por WhatsApp",
+      "href": "https://wa.me/526641234567?text=Hola%20BorderVet%2C%20quiero%20mas%20informacion%20de%20sus%20productos",
+      "variant": "surface"
+    },
+    "imageMain": "/images/hero/about-visual.svg",
+    "imageSecondary": "/images/hero/hero-products.svg",
+    "bgDecor": "dark-glow",
+    "floatingBadges": [
+      "Perros",
+      "Gatos",
+      "Seleccion curada"
+    ]
+  }
+]

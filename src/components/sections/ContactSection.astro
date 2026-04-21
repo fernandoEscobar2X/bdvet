@@ -1,0 +1,212 @@
+---
+import Button from "@/components/ui/Button.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { buildMapsEmbedUrl } from "@/integrations/maps";
+import { contactContent, siteContent } from "@/lib/content";
+
+const contactCards = [
+  {
+    icon: "map-pin",
+    title: contactContent.addressTitle,
+    detail: contactContent.addressLine,
+  },
+  {
+    icon: "whatsapp",
+    title: contactContent.phoneDisplay,
+    detail: "Pedidos, dudas y seguimiento por el canal mas directo.",
+  },
+  {
+    icon: "mail",
+    title: contactContent.email,
+    detail: "Escribenos para consultas, facturas o informacion general.",
+  },
+  {
+    icon: "clock",
+    title: contactContent.hours,
+    detail: "Horario ideal de respuesta para atencion y consulta.",
+  },
+] as const;
+---
+<section class="contact-premium section-block" id="contacto" aria-labelledby="contact-premium-title">
+  <div class="container-shell">
+    <div class="contact-premium__shell">
+      <div class="contact-premium__intro" data-reveal="right">
+        <span class="eyebrow">Ubicacion y contacto</span>
+        <h2 id="contact-premium-title" class="contact-premium__title">
+          Estamos en Tijuana y siempre disponibles para tu mascota
+        </h2>
+        <p class="contact-premium__description">
+          Escribenos por WhatsApp, agenda una consulta o visitanos. Respuesta rapida y atencion real, sin rodeos.
+        </p>
+
+        <div class="contact-premium__actions">
+          <Button href={`https://wa.me/${siteContent.phoneRaw}`} target="_blank" variant="primary">
+            WhatsApp directo
+          </Button>
+          <Button href={siteContent.calendlyUrl} target="_blank" variant="surface">
+            Abrir Calendly
+          </Button>
+        </div>
+
+        <div class="contact-premium__cards">
+          {contactCards.map((card) => (
+            <article class="contact-premium__card">
+              <span class="contact-premium__icon">
+                <Icon name={card.icon} size={18} />
+              </span>
+              <div>
+                <h3>{card.title}</h3>
+                <p>{card.detail}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="contact-premium__map" data-reveal="left">
+        <div class="contact-premium__map-frame">
+          <iframe
+            src={buildMapsEmbedUrl(contactContent.mapsEmbed)}
+            title="Mapa de BorderVet en Tijuana"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact-premium__shell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: clamp(1.4rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+
+  .contact-premium__intro {
+    min-width: 0;
+    padding: 2rem;
+    border-radius: 2.3rem;
+    background:
+      linear-gradient(145deg, rgba(255, 255, 255, 1), rgba(248, 246, 242, 0.98));
+    border: 1px solid rgba(231, 223, 210, 0.84);
+    box-shadow: var(--shadow-card);
+  }
+
+  .contact-premium__title {
+    margin: 1rem 0 1rem;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: clamp(1.95rem, 3.6vw, 3.1rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .contact-premium__description {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.8;
+  }
+
+  .contact-premium__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+  }
+
+  .contact-premium__cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(231, 223, 210, 0.56);
+  }
+
+  .contact-premium__card {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(231, 223, 210, 0.56);
+  }
+
+  .contact-premium__card:last-child {
+    border-bottom: none;
+  }
+
+  .contact-premium__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 1rem;
+    background: rgba(30, 26, 71, 0.08);
+    color: var(--color-primary);
+    flex: 0 0 auto;
+  }
+
+  .contact-premium__card h3 {
+    margin: 0 0 0.35rem;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: 1rem;
+    line-height: 1.14;
+  }
+
+  .contact-premium__card p {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .contact-premium__map {
+    min-width: 0;
+    position: sticky;
+    top: clamp(1.5rem, 4vh, 2.5rem);
+  }
+
+  .contact-premium__map-frame {
+    height: clamp(28rem, 58vh, 38rem);
+    overflow: hidden;
+    border-radius: 2.3rem 2.3rem 5.5rem 2.3rem;
+    border: 1px solid rgba(231, 223, 210, 0.84);
+    box-shadow: var(--shadow-card);
+    background: rgba(224, 242, 255, 0.42);
+  }
+
+  .contact-premium__map-frame iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  @media (max-width: 980px) {
+    .contact-premium__shell {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-premium__map {
+      position: static;
+    }
+
+    .contact-premium__map-frame {
+      height: clamp(22rem, 42vh, 28rem);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .contact-premium__cards {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-premium__actions {
+      flex-direction: column;
+    }
+  }
+</style>

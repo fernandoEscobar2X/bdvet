@@ -1,0 +1,20 @@
+{
+  "title": "BorderVet — Farmacia veterinaria y asesoría virtual en Tijuana",
+  "description": "Productos veterinarios para perros y gatos, asesoría médica virtual y atención cercana desde Tijuana. Una experiencia premium inspirada en Petopia, adaptada a BorderVet.",
+  "businessName": "BorderVet",
+  "tagline": "Farmacia veterinaria con atención cercana, catálogo curado y consulta virtual.",
+  "announcement": "Envíos en Tijuana en 24–48 hrs · Pedido por WhatsApp · Consulta virtual disponible",
+  "phoneRaw": "526641234567",
+  "phoneDisplay": "+52 664 123 4567",
+  "email": "hola@bordervet.com.mx",
+  "addressLine": "Tijuana, Baja California, México",
+  "hours": "Lun – Sáb · 9:00 – 19:00",
+  "mapsEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107280.76817454217!2d-117.12317!3d32.52498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80d9479f0fb23b09%3A0x7451bdb57bbead2!2sTijuana%2C%20B.C.!5e0!3m2!1ses!2smx!4v1681000000000",
+  "calendlyUrl": "https://calendly.com/bordervet/consulta",
+  "socials": {
+    "instagram": "https://instagram.com/bordervet",
+    "facebook": "https://facebook.com/bordervet",
+    "whatsapp": "https://wa.me/526641234567"
+  },
+  "seoImage": "/images/brand/logo-bordervet-white.png"
+}

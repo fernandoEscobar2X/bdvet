@@ -1,0 +1,141 @@
+---
+import ProductGrid from "@/components/catalog/ProductGrid.astro";
+import PromoFeatureSplit from "@/components/sections/PromoFeatureSplit.astro";
+import BrandMarquee from "@/components/sections/BrandMarquee.astro";
+import TrustHighlights from "@/components/sections/TrustHighlights.astro";
+import AboutSplit from "@/components/sections/AboutSplit.astro";
+import ConsultationSection from "@/components/sections/ConsultationSection.astro";
+import ContactSection from "@/components/sections/ContactSection.astro";
+import FeaturedCategories from "@/components/sections/FeaturedCategories.astro";
+import HeroSlider from "@/components/sections/HeroSlider.astro";
+import TestimonialsSection from "@/components/sections/TestimonialsSection.astro";
+import Button from "@/components/ui/Button.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { featuredProducts, siteContent } from "@/lib/content";
+---
+<BaseLayout title={siteContent.title} description={siteContent.description}>
+  <HeroSlider />
+  <BrandMarquee />
+  <TrustHighlights />
+  <FeaturedCategories />
+  <PromoFeatureSplit />
+
+  <section class="section-block home-products-showcase" aria-labelledby="home-products-showcase-title">
+    <div class="container-shell">
+      <div class="home-products-showcase__shell">
+        <div class="home-products-showcase__intro" data-reveal="up">
+          <span class="eyebrow">Productos destacados</span>
+          <h2 id="home-products-showcase-title" class="home-products-showcase__title">
+            Lo mas pedido para perros y gatos este mes
+          </h2>
+          <p class="home-products-showcase__description">
+            Marcas con respaldo clinico, formulas por etapa y cuidado diario. Arma tu pedido en minutos y lo enviamos por WhatsApp.
+          </p>
+
+          <div class="home-products-showcase__tags">
+            <span>Atencion inmediata</span>
+            <span>Pedido por WhatsApp</span>
+            <span>Entrega en Tijuana</span>
+          </div>
+        </div>
+
+        <div class="home-products-showcase__grid" data-reveal="up">
+          <ProductGrid products={featuredProducts} compact />
+        </div>
+
+        <div class="home-products-showcase__actions" data-reveal="up">
+          <Button href="/catalogo" variant="primary">Ver catalogo completo</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ConsultationSection />
+  <AboutSplit />
+  <TestimonialsSection />
+  <ContactSection />
+</BaseLayout>
+
+<style>
+  .home-products-showcase {
+    position: relative;
+  }
+
+  .home-products-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 1.8rem 0 auto;
+    height: calc(100% - 3.6rem);
+    border-radius: 2.8rem;
+    background:
+      radial-gradient(circle at top right, rgba(191, 136, 87, 0.14), transparent 24%),
+      radial-gradient(circle at left center, rgba(224, 242, 255, 0.38), transparent 28%),
+      linear-gradient(145deg, rgba(248, 246, 242, 0.9), rgba(255, 255, 255, 0.98));
+    border: 1px solid rgba(231, 223, 210, 0.74);
+    box-shadow: 0 24px 54px rgba(17, 17, 17, 0.08);
+  }
+
+  .home-products-showcase__shell {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2rem, 4vw, 2.8rem);
+  }
+
+  .home-products-showcase__intro {
+    max-width: 44rem;
+    margin-bottom: 2rem;
+  }
+
+  .home-products-showcase__title {
+    margin: 0.95rem 0 1rem;
+    color: var(--color-heading);
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+
+  .home-products-showcase__description {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.8;
+  }
+
+  .home-products-showcase__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.35rem;
+  }
+
+  .home-products-showcase__tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.58rem 0.88rem;
+    border-radius: var(--radius-pill);
+    background: rgba(247, 239, 228, 0.9);
+    border: 1px solid rgba(231, 223, 210, 0.8);
+    color: var(--color-primary);
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+
+  .home-products-showcase__actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.1rem;
+  }
+
+  @media (max-width: 720px) {
+    .home-products-showcase::before {
+      inset: 1rem 0 auto;
+      height: calc(100% - 2rem);
+      border-radius: 2rem;
+    }
+
+    .home-products-showcase__shell {
+      padding: 1.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,140 @@
+[
+  {
+    "id": "royal-canin-medium",
+    "slug": "royal-canin-medium-adult",
+    "nombre": "Royal Canin Medium Adult",
+    "marca": "Royal Canin",
+    "categoria": "perros",
+    "species": "dog",
+    "precio": 450,
+    "precioOriginal": 520,
+    "imagen": "/images/products/royal-canin-medium.svg",
+    "imagenes": [
+      "/images/products/royal-canin-medium.svg"
+    ],
+    "descripcion": "Alimento premium para perros medianos adultos con fórmula balanceada para digestión, energía y salud general.",
+    "detalles": [
+      "Bolsa 4 kg",
+      "Proteína de alta digestibilidad",
+      "Ideal para perros de talla mediana"
+    ],
+    "badge": "Oferta",
+    "destacado": true,
+    "activo": true
+  },
+  {
+    "id": "purina-pro-plan-gato",
+    "slug": "purina-pro-plan-gato-adulto",
+    "nombre": "Purina Pro Plan Gato Adulto",
+    "marca": "Purina",
+    "categoria": "gatos",
+    "species": "cat",
+    "precio": 380,
+    "precioOriginal": null,
+    "imagen": "/images/products/purina-gato.svg",
+    "imagenes": [
+      "/images/products/purina-gato.svg"
+    ],
+    "descripcion": "Fórmula con proteína de pollo y nutrientes funcionales para gatos adultos con estilo de vida interior o mixto.",
+    "detalles": [
+      "Bolsa 3 kg",
+      "Control digestivo",
+      "Perfil nutricional equilibrado"
+    ],
+    "badge": null,
+    "destacado": true,
+    "activo": true
+  },
+  {
+    "id": "frontline-plus",
+    "slug": "frontline-plus-perro-10-20kg",
+    "nombre": "Frontline Plus Perro 10–20 kg",
+    "marca": "Frontline",
+    "categoria": "perros",
+    "species": "dog",
+    "precio": 290,
+    "precioOriginal": null,
+    "imagen": "/images/products/frontline-plus.svg",
+    "imagenes": [
+      "/images/products/frontline-plus.svg"
+    ],
+    "descripcion": "Pipeta antipulgas y garrapatas con aplicación mensual para perros de talla mediana.",
+    "detalles": [
+      "1 pipeta mensual",
+      "Cobertura antiparasitaria",
+      "Aplicación tópica"
+    ],
+    "badge": "Top ventas",
+    "destacado": true,
+    "activo": true
+  },
+  {
+    "id": "hills-kitten",
+    "slug": "hills-science-diet-kitten",
+    "nombre": "Hill's Science Diet Kitten",
+    "marca": "Hill's",
+    "categoria": "gatos",
+    "species": "cat",
+    "precio": 420,
+    "precioOriginal": null,
+    "imagen": "/images/products/hills-kitten.svg",
+    "imagenes": [
+      "/images/products/hills-kitten.svg"
+    ],
+    "descripcion": "Nutrición de crecimiento para gatitos con fórmula diseñada para desarrollo cerebral, muscular e inmune.",
+    "detalles": [
+      "Bolsa 2 kg",
+      "Con DHA",
+      "Para gatitos hasta 12 meses"
+    ],
+    "badge": "Nuevo",
+    "destacado": false,
+    "activo": true
+  },
+  {
+    "id": "seresto-collar",
+    "slug": "seresto-collar-antipulgas-perro",
+    "nombre": "Collar Seresto Perro",
+    "marca": "Seresto",
+    "categoria": "perros",
+    "species": "dog",
+    "precio": 650,
+    "precioOriginal": null,
+    "imagen": "/images/products/seresto-collar.svg",
+    "imagenes": [
+      "/images/products/seresto-collar.svg"
+    ],
+    "descripcion": "Collar antipulgas y garrapatas de acción prolongada, ideal para protección continua.",
+    "detalles": [
+      "Protección de larga duración",
+      "Fácil de colocar",
+      "Uso exterior e interior"
+    ],
+    "badge": "Top ventas",
+    "destacado": true,
+    "activo": true
+  },
+  {
+    "id": "catsan-arena",
+    "slug": "catsan-arena-sanitaria-10l",
+    "nombre": "Catsan Arena Sanitaria 10L",
+    "marca": "Catsan",
+    "categoria": "gatos",
+    "species": "cat",
+    "precio": 220,
+    "precioOriginal": 260,
+    "imagen": "/images/products/catsan-arena.svg",
+    "imagenes": [
+      "/images/products/catsan-arena.svg"
+    ],
+    "descripcion": "Arena aglomerante con buen control de olores y mantenimiento práctico para casa.",
+    "detalles": [
+      "Presentación 10 L",
+      "Control de humedad",
+      "Fácil limpieza"
+    ],
+    "badge": "Oferta",
+    "destacado": false,
+    "activo": true
+  }
+]

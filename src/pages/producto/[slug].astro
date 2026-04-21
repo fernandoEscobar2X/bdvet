@@ -1,0 +1,49 @@
+---
+import "@/styles/catalog.css";
+
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ProductGallery from "@/components/catalog/ProductGallery.astro";
+import ProductInfoPanel from "@/components/catalog/ProductInfoPanel.astro";
+import RelatedProducts from "@/components/catalog/RelatedProducts.astro";
+import { activeProducts, relatedProducts, siteContent } from "@/lib/content";
+
+export const getStaticPaths = () =>
+  activeProducts.map((product) => ({
+    params: { slug: product.slug },
+    props: { product },
+  }));
+
+const { product } = Astro.props;
+const related = relatedProducts(product);
+const whatsappHref = `https://wa.me/${siteContent.phoneRaw}?text=${encodeURIComponent(
+  `Hola BorderVet, quiero consultar disponibilidad de ${product.nombre}`,
+)}`;
+---
+<BaseLayout
+  title={`${product.nombre} — BorderVet`}
+  description={product.descripcion}
+  image={product.imagen}
+>
+  <section class="page-hero">
+    <div class="container-shell">
+      <div class="catalog-hero__breadcrumbs">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <a href="/catalogo">Catalogo</a>
+        <span>/</span>
+        <span>{product.nombre}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block product-page-section">
+    <div class="container-shell">
+      <div class="product-page-layout">
+        <ProductGallery product={product} />
+        <ProductInfoPanel product={product} whatsappHref={whatsappHref} />
+      </div>
+    </div>
+  </section>
+
+  <RelatedProducts products={related} />
+</BaseLayout>

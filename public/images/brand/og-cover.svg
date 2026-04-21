@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#10263D"/>
+  <circle cx="240" cy="140" r="110" fill="#76A83C" fill-opacity=".2"/>
+  <circle cx="980" cy="120" r="120" fill="#DCCFB7" fill-opacity=".18"/>
+  <rect x="96" y="112" width="1008" height="406" rx="36" fill="#F4F8FB"/>
+  <rect x="160" y="174" width="88" height="88" rx="18" fill="#76A83C"/>
+  <rect x="212" y="226" width="88" height="88" rx="18" fill="#76A83C"/>
+  <text x="338" y="274" fill="#17324D" font-family="Arial, sans-serif" font-size="76" font-weight="700">BorderVet</text>
+  <text x="338" y="340" fill="#76A83C" font-family="Arial, sans-serif" font-size="34">Farmacia veterinaria · catálogo premium · asesoría virtual</text>
+  <text x="338" y="410" fill="#555555" font-family="Arial, sans-serif" font-size="28">Inspirado en Petopia, adaptado al contexto de Tijuana.</text>
+</svg>

@@ -1,0 +1,27 @@
+---
+import Icon from "@/components/ui/Icon.astro";
+import Badge from "@/components/ui/Badge.astro";
+
+type Props = {
+  category: string;
+  speciesLabel: string;
+  badge?: string | null;
+};
+
+const { category, speciesLabel, badge } = Astro.props as Props;
+---
+<div class="catalog-card__badge-stack" aria-label="Etiquetas del producto">
+  <div class="catalog-card__badge-group">
+    <span class="catalog-card__pill catalog-card__pill--soft">{category}</span>
+    <span class="catalog-card__pill catalog-card__pill--ghost">
+      <Icon name="paw" size={13} />
+      <span>{speciesLabel}</span>
+    </span>
+  </div>
+
+  {badge ? (
+    <span class="catalog-card__badge-wrap">
+      <Badge text={badge} />
+    </span>
+  ) : null}
+</div>

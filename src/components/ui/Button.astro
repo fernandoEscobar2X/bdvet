@@ -1,0 +1,68 @@
+---
+type Props = {
+  href?: string;
+  target?: string;
+  variant?: "primary" | "secondary" | "surface" | "dark" | "link";
+  icon?: boolean;
+  type?: "button" | "submit";
+  dataCartToggle?: boolean;
+  dataNavToggle?: boolean;
+  dataNavClose?: boolean;
+  dataCartClose?: boolean;
+  dataClearCart?: boolean;
+  dataCartCheckout?: boolean;
+  ariaLabel?: string;
+};
+
+const {
+  href,
+  target,
+  variant = "primary",
+  icon = false,
+  type = "button",
+  dataCartToggle = false,
+  dataNavToggle = false,
+  dataNavClose = false,
+  dataCartClose = false,
+  dataClearCart = false,
+  dataCartCheckout = false,
+  ariaLabel,
+} = Astro.props as Props;
+
+const className = [
+  "btn",
+  variant === "primary" && "btn-primary",
+  variant === "secondary" && "btn-secondary",
+  variant === "surface" && "btn-surface",
+  variant === "dark" && "btn-dark",
+  variant === "link" && "btn-link",
+  icon && "icon-button",
+]
+  .filter(Boolean)
+  .join(" ");
+---
+{href ? (
+  <a
+    href={href}
+    class={className}
+    target={target}
+    rel={target === "_blank" ? "noopener noreferrer" : undefined}
+    aria-label={ariaLabel}
+  >
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    class={className}
+    aria-label={ariaLabel}
+    data-cart-toggle={dataCartToggle ? "true" : undefined}
+    data-nav-toggle={dataNavToggle ? "true" : undefined}
+    data-nav-close={dataNavClose ? "true" : undefined}
+    data-cart-close={dataCartClose ? "true" : undefined}
+    data-clear-cart={dataClearCart ? "true" : undefined}
+    data-cart-checkout={dataCartCheckout ? "true" : undefined}
+  >
+    <slot />
+  </button>
+)}

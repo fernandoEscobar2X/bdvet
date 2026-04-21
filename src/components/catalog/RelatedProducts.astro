@@ -1,0 +1,28 @@
+---
+import ProductGrid from "@/components/catalog/ProductGrid.astro";
+import type { Product } from "@/domain/product";
+
+type Props = {
+  products: Product[];
+};
+
+const { products } = Astro.props as Props;
+---
+{products.length > 0 ? (
+  <section class="section-block alt-surface">
+    <div class="container-shell">
+      <div class="product-related__header" data-reveal="up">
+        <span class="eyebrow">Relacionados</span>
+        <h2 class="product-related__title">Tambien te puede interesar</h2>
+        <p class="product-related__copy">
+          Mantiene la sensacion de tienda real y fortalece el recorrido comercial dentro de
+          BorderVet.
+        </p>
+      </div>
+
+      <div data-reveal="up">
+        <ProductGrid products={products} compact />
+      </div>
+    </div>
+  </section>
+) : null}
