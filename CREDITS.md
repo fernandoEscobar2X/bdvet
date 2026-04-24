@@ -17,7 +17,19 @@ Los logos se usan en el marquee de marcas con finalidad identificativa: BorderVe
 | `nupec.svg` | Nupec | Wordmark interno (placeholder) | Pendiente sustituir por logo oficial en v3 |
 | `bravecto.svg` | Bravecto | Wordmark interno (placeholder) | Pendiente sustituir por logo oficial en v3 |
 
-## Hero, categorías y productos
+## Hero — `public/images/hero/`
+
+Licencia Unsplash: uso libre comercial y no-comercial, atribución no obligatoria pero recomendada.
+
+| Archivo | Contexto | Fuente |
+| --- | --- | --- |
+| `hero-main-storefront.jpg` | Slide 1 — "Todo para el cuidado" | [Unsplash · qO-PIF84Vxg](https://unsplash.com/photos/qO-PIF84Vxg) |
+| `hero-main-consultation.jpg` | Slide 2 — "Asesoría virtual" | [Unsplash · tDlo2ZPlQlU](https://unsplash.com/photos/tDlo2ZPlQlU) |
+| `hero-main-selection.jpg` | Slide 3 — "Selección destacada" | [Unsplash · c7bUIRBqapA](https://unsplash.com/photos/c7bUIRBqapA) |
+
+SVGs secundarios (`about-visual.svg`, `hero-products.svg`, `hero-consultation.svg`) se mantienen como acentos visuales hasta tener fotografía específica.
+
+## Categorías y productos
 
 Pendiente en el siguiente lote de assets de esta rama (`v2-assets-prototype`).
 

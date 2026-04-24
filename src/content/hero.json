@@ -15,7 +15,7 @@
       "href": "#asesoria",
       "variant": "surface"
     },
-    "imageMain": "/images/hero/hero-products.svg",
+    "imageMain": "/images/hero/hero-main-storefront.jpg",
     "imageSecondary": "/images/hero/about-visual.svg",
     "bgDecor": "waves",
     "floatingBadges": [
@@ -40,7 +40,7 @@
       "href": "#contacto",
       "variant": "surface"
     },
-    "imageMain": "/images/hero/hero-consultation.svg",
+    "imageMain": "/images/hero/hero-main-consultation.jpg",
     "imageSecondary": "/images/brand/logo-bordervet-transparent.png",
     "bgDecor": "soft-orb",
     "floatingBadges": [
@@ -65,7 +65,7 @@
       "href": "https://wa.me/526641234567?text=Hola%20BorderVet%2C%20quiero%20mas%20informacion%20de%20sus%20productos",
       "variant": "surface"
     },
-    "imageMain": "/images/hero/about-visual.svg",
+    "imageMain": "/images/hero/hero-main-selection.jpg",
     "imageSecondary": "/images/hero/hero-products.svg",
     "bgDecor": "dark-glow",
     "floatingBadges": [
