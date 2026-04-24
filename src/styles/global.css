@@ -1901,6 +1901,10 @@ select {
     display: inline-flex;
   }
 
+  .site-header {
+    padding-top: var(--safe-top);
+  }
+
   .header-inner {
     min-height: 4.9rem;
   }
@@ -1909,13 +1913,26 @@ select {
     gap: 0.9rem;
   }
 
+  .brand-logo--header {
+    transform: scale(1.2);
+    height: clamp(2.8rem, 6vw, 3.6rem);
+  }
+
+  .site-header[data-scrolled="true"] .brand-logo--header {
+    transform: scale(1.1);
+  }
+
   .header-cart-pill__label {
     display: none;
   }
 
   .header-cart-pill {
-    min-height: 3rem;
-    padding-inline: 0.45rem;
+    min-height: 2.8rem;
+    padding-inline: 0.5rem;
+  }
+
+  .announcement-bar {
+    padding-top: var(--safe-top);
   }
 
   .hero-slide {
