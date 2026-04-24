@@ -6,7 +6,7 @@ const categoryCards = [
     title: "Perros",
     description: "Alimento por etapa, snacks y esenciales para cada raza y tamano.",
     href: "/catalogo?categoria=perros",
-    image: "/images/products/royal-canin-medium.svg",
+    image: "/images/categories/cat-perros.jpg",
     badge: "Mas vendido",
     tone: "blue",
     size: "wide",
@@ -15,7 +15,7 @@ const categoryCards = [
     title: "Gatos",
     description: "Alimento, arena y cuidado especifico para la vida indoor.",
     href: "/catalogo?categoria=gatos",
-    image: "/images/products/purina-gato.svg",
+    image: "/images/categories/cat-gatos.jpg",
     badge: "Vida indoor",
     tone: "cream",
     size: "tall",
@@ -24,7 +24,7 @@ const categoryCards = [
     title: "Higiene y cuidado",
     description: "Antiparasitarios, champu y productos clinicos con respaldo veterinario.",
     href: "/catalogo",
-    image: "/images/products/seresto-collar.svg",
+    image: "/images/categories/cat-higiene.jpg",
     badge: "Cuidado clinico",
     tone: "white",
     size: "standard",
@@ -33,7 +33,7 @@ const categoryCards = [
     title: "Alimento premium",
     description: "Royal Canin, Hill's y formulas especificas por etapa o condicion.",
     href: "/catalogo",
-    image: "/images/products/hills-kitten.svg",
+    image: "/images/categories/cat-alimento-premium.jpg",
     badge: "Top marcas",
     tone: "dark",
     size: "wide",
@@ -274,53 +274,36 @@ const categoryFallback = `this.onerror=null;this.src='${CATEGORY_PLACEHOLDER}'`;
   .featured-categories__media {
     position: absolute;
     inset: 0;
-    display: grid;
-    align-items: end;
-    justify-items: end;
-    padding: 0.5rem 0.2rem 0;
-    overflow: visible;
+    overflow: hidden;
+    border-radius: 2rem;
+    z-index: 0;
   }
 
   .featured-categories__media img {
-    width: min(90%, 25rem);
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 28px 54px rgba(17, 17, 17, 0.2));
-    transform: translate3d(calc(12% + var(--category-shift-x)), calc(10% + var(--category-shift-y)), 0) scale(1.02);
-    transition:
-      transform 900ms var(--ease-premium),
-      filter 900ms var(--ease-premium);
-    transform-origin: center bottom;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.04) translate3d(var(--category-shift-x), var(--category-shift-y), 0);
+    transition: transform 900ms var(--ease-premium);
+    transform-origin: center;
   }
 
   .featured-categories__card:hover .featured-categories__media img {
-    transform: translate3d(calc(15% + var(--category-shift-x)), calc(4% + var(--category-shift-y)), 0) scale(1.08) rotate(-1.2deg);
-    filter: drop-shadow(0 34px 64px rgba(17, 17, 17, 0.22));
-  }
-
-  .featured-categories__card--wide .featured-categories__media img {
-    width: min(88%, 27rem);
-    transform: translate3d(calc(14% + var(--category-shift-x)), calc(12% + var(--category-shift-y)), 0) scale(1.02);
-  }
-
-  .featured-categories__card--tall .featured-categories__media img {
-    width: min(96%, 27rem);
-    transform: translate3d(calc(20% + var(--category-shift-x)), calc(4% + var(--category-shift-y)), 0) scale(1.02);
-  }
-
-  .featured-categories__card--standard .featured-categories__media img {
-    width: min(82%, 23rem);
-    transform: translate3d(calc(14% + var(--category-shift-x)), calc(14% + var(--category-shift-y)), 0) scale(1.02);
+    transform: scale(1.1) translate3d(var(--category-shift-x), var(--category-shift-y), 0);
   }
 
   .featured-categories__overlay {
     position: absolute;
-    inset: auto 0 0;
-    height: 70%;
+    inset: 0;
     background:
-      linear-gradient(180deg, rgba(17, 17, 17, 0), rgba(17, 17, 17, 0.08) 28%, rgba(17, 17, 17, 0.42));
+      linear-gradient(180deg,
+        rgba(17, 17, 17, 0.18) 0%,
+        rgba(17, 17, 17, 0.28) 42%,
+        rgba(17, 17, 17, 0.78) 100%);
     z-index: 1;
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 2rem;
+    pointer-events: none;
   }
 
   .featured-categories__content {
@@ -329,7 +312,8 @@ const categoryFallback = `this.onerror=null;this.src='${CATEGORY_PLACEHOLDER}'`;
     align-self: flex-end;
     width: 100%;
     padding: 1.65rem;
-    color: var(--color-heading);
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(17, 17, 17, 0.36);
     transform: translate3d(0, 0, 0);
     transition: transform var(--transition-base);
   }
@@ -343,6 +327,7 @@ const categoryFallback = `this.onerror=null;this.src='${CATEGORY_PLACEHOLDER}'`;
     font-family: var(--font-display);
     font-size: clamp(1.45rem, 2vw, 2rem);
     line-height: 1.05;
+    color: #ffffff;
   }
 
   .featured-categories__content p {
@@ -350,7 +335,7 @@ const categoryFallback = `this.onerror=null;this.src='${CATEGORY_PLACEHOLDER}'`;
     max-width: 24rem;
     font-size: 0.97rem;
     line-height: 1.7;
-    color: rgba(17, 17, 17, 0.78);
+    color: rgba(255, 255, 255, 0.88);
   }
 
   .featured-categories__link {

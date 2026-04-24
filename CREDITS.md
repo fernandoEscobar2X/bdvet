@@ -29,7 +29,20 @@ Licencia Unsplash: uso libre comercial y no-comercial, atribución no obligatori
 
 SVGs secundarios (`about-visual.svg`, `hero-products.svg`, `hero-consultation.svg`) se mantienen como acentos visuales hasta tener fotografía específica.
 
-## Categorías y productos
+## Categorías — `public/images/categories/`
+
+Fotografía de tarjetas de categoría. Licencias: Unsplash (uso libre) y Pexels (uso libre comercial, atribución recomendada).
+
+| Archivo | Categoría | Fuente |
+| --- | --- | --- |
+| `cat-perros.jpg` | Perros | [Unsplash · EkzMdwI_YE4](https://unsplash.com/photos/EkzMdwI_YE4) |
+| `cat-gatos.jpg` | Gatos | [Pexels · 27505770](https://www.pexels.com/photo/27505770/) |
+| `cat-higiene.jpg` | Higiene y cuidado | [Pexels · 6816848](https://www.pexels.com/photo/6816848/) |
+| `cat-alimento-premium.jpg` | Alimento premium | [Pexels · 12928244](https://www.pexels.com/photo/12928244/) |
+
+Las tarjetas se migraron de packshot a cover full-bleed (`object-fit: cover`) para aprovechar fotografía editorial.
+
+## Productos
 
 Pendiente en el siguiente lote de assets de esta rama (`v2-assets-prototype`).
 
