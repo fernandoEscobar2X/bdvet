@@ -511,6 +511,8 @@
 
 .cart-drawer-premium__close {
   flex: 0 0 auto;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   background: rgba(30, 26, 71, 0.08);
   box-shadow: 0 14px 28px rgba(17, 17, 17, 0.08);
 }
@@ -648,6 +650,26 @@
   .catalog-filter__chip {
     flex: 0 0 auto;
     scroll-snap-align: start;
+  }
+
+  .cart-drawer-premium__header {
+    padding-top: calc(1.25rem + var(--safe-top));
+    padding-left: calc(1.25rem + var(--safe-left));
+    padding-right: calc(1.25rem + var(--safe-right));
+  }
+
+  .cart-drawer-premium__footer {
+    padding-left: calc(1.25rem + var(--safe-left));
+    padding-right: calc(1.25rem + var(--safe-right));
+    padding-bottom: calc(1.25rem + var(--safe-bottom));
+  }
+
+  .cart-drawer-premium__checkout {
+    min-height: 3rem;
+  }
+
+  .cart-drawer-premium__clear {
+    min-height: 2.6rem;
   }
 }
 
