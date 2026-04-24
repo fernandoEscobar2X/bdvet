@@ -517,6 +517,7 @@ const closeCartDrawerWithGsap = () => {
 };
 
 const setCartOpen = (next: boolean) => {
+  if (!next) cancelCartAutoClose();
   state.isCartOpen = next;
   if (next) {
     state.isNavOpen = false;
@@ -673,6 +674,23 @@ const flashCartItem = (productId: string) => {
   );
 };
 
+let cartAutoCloseTimer: number | null = null;
+
+const cancelCartAutoClose = () => {
+  if (cartAutoCloseTimer !== null) {
+    window.clearTimeout(cartAutoCloseTimer);
+    cartAutoCloseTimer = null;
+  }
+};
+
+const scheduleCartAutoClose = (delay = 2800) => {
+  cancelCartAutoClose();
+  cartAutoCloseTimer = window.setTimeout(() => {
+    cartAutoCloseTimer = null;
+    if (state.isCartOpen) setCartOpen(false);
+  }, delay);
+};
+
 const addToCart = (productId: string, originCard?: HTMLElement | null) => {
   const product = productMap.get(productId);
   if (!product) return;
@@ -698,6 +716,7 @@ const addToCart = (productId: string, originCard?: HTMLElement | null) => {
   animateCartCount();
   pulseProductCardPrice(originCard ?? null);
   setCartOpen(true);
+  scheduleCartAutoClose();
   requestAnimationFrame(() => flashCartItem(productId));
   showToast(`${product.nombre} agregado al carrito`);
 };
@@ -1254,11 +1273,19 @@ const setupFeaturedCategories = () => {
 };
 
 const setupCartDrawerMotion = () => {
+  const drawer = document.querySelector<HTMLElement>(selectors.cartDrawer);
+  if (drawer) {
+    const cancelOnInteract = () => cancelCartAutoClose();
+    drawer.addEventListener("pointerenter", cancelOnInteract);
+    drawer.addEventListener("pointerdown", cancelOnInteract);
+    drawer.addEventListener("wheel", cancelOnInteract, { passive: true });
+    drawer.addEventListener("touchstart", cancelOnInteract, { passive: true });
+  }
+
   loadGsap().then((gsap) => {
     if (!gsap) return;
 
     cartDrawerGsap = gsap;
-    const drawer = document.querySelector<HTMLElement>(selectors.cartDrawer);
     if (!drawer) return;
 
     drawer.dataset.drawerMotion = "gsap";
