@@ -199,6 +199,8 @@ const state = {
 };
 
 let cartDrawerGsap: GsapLike | null = null;
+let cartCloseTimeline: GsapTimeline | null = null;
+let cartOverlayTween: GsapTween | null = null;
 let lenisInstance: Lenis | null = null;
 let scrollTriggerRef: ScrollTriggerLike | null = null;
 
@@ -390,10 +392,10 @@ const openCartDrawerWithGsap = () => {
     (segment): segment is HTMLElement => Boolean(segment),
   );
 
-  drawer.dataset.drawerMotion = "gsap";
-  drawer.dataset.open = "true";
-  drawer.dataset.ready = "true";
-  overlay.dataset.open = "true";
+  cartCloseTimeline?.kill();
+  cartCloseTimeline = null;
+  cartOverlayTween?.kill();
+  cartOverlayTween = null;
 
   cartDrawerGsap.killTweensOf([
     overlay,
@@ -404,6 +406,12 @@ const openCartDrawerWithGsap = () => {
     ...footerParts,
   ]);
 
+  drawer.dataset.drawerMotion = "gsap";
+  drawer.dataset.open = "true";
+  drawer.dataset.ready = "true";
+  overlay.dataset.open = "true";
+
+  cartDrawerGsap.set(drawer, { clearProps: "transform,opacity,scale,y,x,xPercent" });
   cartDrawerGsap.set(drawer, { xPercent: 100, scale: 0.985, transformOrigin: "100% 50%" });
   cartDrawerGsap.set(backdrop, { autoAlpha: 0, scale: 1.06 });
   cartDrawerGsap.set(headerSegment, { autoAlpha: 0, x: 24 });
@@ -478,11 +486,14 @@ const closeCartDrawerWithGsap = () => {
     (segment): segment is HTMLElement => Boolean(segment),
   );
 
+  cartCloseTimeline?.kill();
+  cartOverlayTween?.kill();
   cartDrawerGsap.killTweensOf([overlay, drawer, backdrop, ...orderedSegments]);
 
   const timeline = cartDrawerGsap.timeline({
     defaults: { ease: "power3.inOut" },
     onComplete: () => {
+      cartCloseTimeline = null;
       if (state.isCartOpen) return;
       drawer.dataset.open = "false";
       drawer.dataset.ready = "false";
@@ -491,6 +502,7 @@ const closeCartDrawerWithGsap = () => {
       });
     },
   });
+  cartCloseTimeline = timeline;
 
   timeline
     .to(orderedSegments, { autoAlpha: 0, y: 14, duration: 0.22, stagger: 0.03 }, 0)
@@ -502,11 +514,12 @@ const closeCartDrawerWithGsap = () => {
     0.06,
   );
 
-  cartDrawerGsap.to(overlay, {
+  cartOverlayTween = cartDrawerGsap.to(overlay, {
     opacity: 0,
     duration: 0.28,
     ease: SINE_IN_OUT,
     onComplete: () => {
+      cartOverlayTween = null;
       if (state.isCartOpen || state.isNavOpen) return;
       overlay.dataset.open = "false";
       cartDrawerGsap?.set(overlay, { clearProps: "opacity" });
