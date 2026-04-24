@@ -190,6 +190,27 @@ const brands = [
     }
   }
 
+  @media (max-width: 480px) {
+    .brand-marquee {
+      padding: 0.75rem 0 1.2rem;
+    }
+
+    .brand-marquee__item {
+      min-height: 4.2rem;
+      min-width: calc(var(--brand-width) + 1.4rem);
+      padding: 0.8rem 0.7rem;
+    }
+
+    .brand-marquee__item::after {
+      height: 1.6rem;
+    }
+
+    .brand-marquee__logo {
+      height: 1.8rem;
+      opacity: 0.76;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .brand-marquee__logo {
       filter: none;
