@@ -1981,6 +1981,14 @@ select {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .footer {
+    padding-top: 3rem;
+  }
+
+  .footer-bottom {
+    padding-bottom: calc(1.4rem + var(--safe-bottom));
+  }
 }
 
 @media (max-width: 900px) {
