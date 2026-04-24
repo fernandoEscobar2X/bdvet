@@ -197,8 +197,8 @@
   content: "";
   position: absolute;
   inset: auto 0 0;
-  height: 46%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.76));
+  height: 28%;
+  background: linear-gradient(180deg, rgba(17, 17, 17, 0), rgba(17, 17, 17, 0.12));
   pointer-events: none;
 }
 
@@ -210,19 +210,16 @@
 .catalog-card__image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 1.7rem;
-  transform: translate3d(var(--card-shift-x), var(--card-shift-y), 0) scale(1.01);
-  transform-origin: center bottom;
-  transition:
-    transform 620ms var(--ease-premium),
-    filter 620ms var(--ease-premium);
+  object-fit: cover;
+  object-position: center;
+  transform: translate3d(var(--card-shift-x), var(--card-shift-y), 0) scale(1.02);
+  transform-origin: center;
+  transition: transform 620ms var(--ease-premium);
 }
 
 .catalog-card:hover .catalog-card__image,
 .catalog-card:focus-within .catalog-card__image {
-  transform: translate3d(var(--card-shift-x), calc(var(--card-shift-y) - 8px), 0) scale(1.095);
-  filter: drop-shadow(0 20px 34px rgba(17, 17, 17, 0.14));
+  transform: translate3d(var(--card-shift-x), calc(var(--card-shift-y) - 4px), 0) scale(1.075);
 }
 
 .catalog-card__badge-stack {
@@ -650,7 +647,7 @@
   }
 
   .catalog-card__image {
-    padding: 1.25rem;
+    object-fit: cover;
   }
 
   .catalog-card__quick-link,

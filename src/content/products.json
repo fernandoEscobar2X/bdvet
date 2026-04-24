@@ -8,9 +8,9 @@
     "species": "dog",
     "precio": 450,
     "precioOriginal": 520,
-    "imagen": "/images/products/royal-canin-medium.svg",
+    "imagen": "/images/products/royal-canin-medium.jpg",
     "imagenes": [
-      "/images/products/royal-canin-medium.svg"
+      "/images/products/royal-canin-medium.jpg"
     ],
     "descripcion": "Alimento premium para perros medianos adultos con fórmula balanceada para digestión, energía y salud general.",
     "detalles": [
@@ -31,9 +31,9 @@
     "species": "cat",
     "precio": 380,
     "precioOriginal": null,
-    "imagen": "/images/products/purina-gato.svg",
+    "imagen": "/images/products/purina-gato.jpg",
     "imagenes": [
-      "/images/products/purina-gato.svg"
+      "/images/products/purina-gato.jpg"
     ],
     "descripcion": "Fórmula con proteína de pollo y nutrientes funcionales para gatos adultos con estilo de vida interior o mixto.",
     "detalles": [
@@ -54,9 +54,9 @@
     "species": "dog",
     "precio": 290,
     "precioOriginal": null,
-    "imagen": "/images/products/frontline-plus.svg",
+    "imagen": "/images/products/frontline-plus.jpg",
     "imagenes": [
-      "/images/products/frontline-plus.svg"
+      "/images/products/frontline-plus.jpg"
     ],
     "descripcion": "Pipeta antipulgas y garrapatas con aplicación mensual para perros de talla mediana.",
     "detalles": [
@@ -77,9 +77,9 @@
     "species": "cat",
     "precio": 420,
     "precioOriginal": null,
-    "imagen": "/images/products/hills-kitten.svg",
+    "imagen": "/images/products/hills-kitten.jpg",
     "imagenes": [
-      "/images/products/hills-kitten.svg"
+      "/images/products/hills-kitten.jpg"
     ],
     "descripcion": "Nutrición de crecimiento para gatitos con fórmula diseñada para desarrollo cerebral, muscular e inmune.",
     "detalles": [
@@ -100,9 +100,9 @@
     "species": "dog",
     "precio": 650,
     "precioOriginal": null,
-    "imagen": "/images/products/seresto-collar.svg",
+    "imagen": "/images/products/seresto-collar.jpg",
     "imagenes": [
-      "/images/products/seresto-collar.svg"
+      "/images/products/seresto-collar.jpg"
     ],
     "descripcion": "Collar antipulgas y garrapatas de acción prolongada, ideal para protección continua.",
     "detalles": [
@@ -123,9 +123,9 @@
     "species": "cat",
     "precio": 220,
     "precioOriginal": 260,
-    "imagen": "/images/products/catsan-arena.svg",
+    "imagen": "/images/products/catsan-arena.jpg",
     "imagenes": [
-      "/images/products/catsan-arena.svg"
+      "/images/products/catsan-arena.jpg"
     ],
     "descripcion": "Arena aglomerante con buen control de olores y mantenimiento práctico para casa.",
     "detalles": [
