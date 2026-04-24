@@ -211,6 +211,7 @@ const refreshScrollTrigger = () => {
 const setupPremiumScroll = () => {
   if (prefersReducedMotion) return;
   if (typeof window === "undefined") return;
+  if (window.matchMedia("(pointer: coarse)").matches) return;
 
   const lenis = new Lenis({
     lerp: 0.1,
