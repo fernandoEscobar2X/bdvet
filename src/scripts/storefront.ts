@@ -483,6 +483,7 @@ const closeCartDrawerWithGsap = () => {
   const timeline = cartDrawerGsap.timeline({
     defaults: { ease: "power3.inOut" },
     onComplete: () => {
+      if (state.isCartOpen) return;
       drawer.dataset.open = "false";
       drawer.dataset.ready = "false";
       cartDrawerGsap?.set([drawer, backdrop, ...orderedSegments], {
@@ -506,9 +507,8 @@ const closeCartDrawerWithGsap = () => {
     duration: 0.28,
     ease: SINE_IN_OUT,
     onComplete: () => {
-      if (!state.isNavOpen) {
-        overlay.dataset.open = "false";
-      }
+      if (state.isCartOpen || state.isNavOpen) return;
+      overlay.dataset.open = "false";
       cartDrawerGsap?.set(overlay, { clearProps: "opacity" });
     },
   });
