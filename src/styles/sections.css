@@ -491,7 +491,7 @@
   }
 
   .hero-premium__pagination {
-    bottom: 1.1rem !important;
+    bottom: calc(1.1rem + var(--safe-bottom)) !important;
   }
 }
 
