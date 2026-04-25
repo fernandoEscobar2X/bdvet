@@ -425,6 +425,8 @@
 }
 
 @media (max-width: 820px) {
+  .hero-premium,
+  .hero-premium__swiper,
   .hero-premium__slide {
     min-height: auto;
   }
@@ -432,7 +434,9 @@
   .hero-premium__grid {
     grid-template-columns: 1fr;
     padding-top: 3rem;
-    padding-bottom: 6.8rem;
+    padding-bottom: 5rem;
+    align-items: start;
+    min-height: 0;
   }
 
   .hero-premium__copy {

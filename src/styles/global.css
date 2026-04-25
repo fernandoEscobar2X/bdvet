@@ -1999,7 +1999,7 @@ select {
 
 @media (max-width: 640px) {
   .container-shell {
-    width: min(var(--container-width), calc(100% - 1.1rem));
+    width: min(var(--container-width), calc(100% - 2rem));
     padding-inline: max(0px, var(--safe-left)) max(0px, var(--safe-right));
   }
 
