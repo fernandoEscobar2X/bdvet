@@ -437,6 +437,17 @@
     padding-bottom: 5rem;
     align-items: start;
     min-height: 0;
+    min-width: 0;
+  }
+
+  .hero-premium__visual--main {
+    margin-right: 0;
+    min-width: 0;
+  }
+
+  .hero-premium__visual--support {
+    margin-left: 0;
+    min-width: 0;
   }
 
   .hero-premium__copy {

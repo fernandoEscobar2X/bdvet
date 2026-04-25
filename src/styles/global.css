@@ -19,8 +19,15 @@ body {
   background: var(--color-surface);
   min-height: 100vh;
   min-height: 100dvh;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 900px) {
+  html:not([data-lenis-active="true"]) {
+    scroll-behavior: auto;
+  }
 }
 
 body[data-nav-open="true"],
