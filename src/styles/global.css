@@ -1695,6 +1695,12 @@ select {
   .drawer-overlay {
     backdrop-filter: blur(3px);
     background: rgba(9, 18, 29, 0.42);
+    transition: opacity 220ms var(--ease-premium);
+  }
+
+  .cart-drawer,
+  .mobile-drawer {
+    transition: transform 240ms var(--ease-premium);
   }
 }
 

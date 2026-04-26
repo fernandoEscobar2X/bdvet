@@ -371,11 +371,15 @@ const EXPO_OUT = "expo.out";
 const EXPO_IN = "expo.in";
 const SINE_IN_OUT = "sine.inOut";
 
+const isTouchDevice = () =>
+  typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
 const openCartDrawerWithGsap = () => {
   const drawer = document.querySelector<HTMLElement>(selectors.cartDrawer);
   const overlay = document.querySelector<HTMLElement>(selectors.overlay);
 
   if (!drawer || !overlay || !cartDrawerGsap) return false;
+  if (isTouchDevice()) return false;
 
   const backdrop = drawer.querySelector<HTMLElement>("[data-drawer-backdrop]");
   const headerSegment = drawer.querySelector<HTMLElement>('[data-drawer-segment="header"]');
@@ -478,6 +482,7 @@ const closeCartDrawerWithGsap = () => {
   const overlay = document.querySelector<HTMLElement>(selectors.overlay);
 
   if (!drawer || !overlay || !cartDrawerGsap) return false;
+  if (isTouchDevice()) return false;
 
   const backdrop = drawer.querySelector<HTMLElement>("[data-drawer-backdrop]");
   const headerSegment = drawer.querySelector<HTMLElement>('[data-drawer-segment="header"]');
