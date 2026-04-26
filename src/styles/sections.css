@@ -431,6 +431,10 @@
     min-height: auto;
   }
 
+  .hero-premium__swiper {
+    min-height: 32rem;
+  }
+
   .hero-premium__grid {
     grid-template-columns: 1fr;
     padding-top: 3rem;
@@ -509,6 +513,10 @@
 }
 
 @media (max-width: 640px) {
+  .hero-premium__swiper {
+    min-height: 28rem;
+  }
+
   .hero-premium__grid {
     padding-top: 2rem;
     padding-bottom: 4rem;
