@@ -903,17 +903,23 @@ const setupHeroSwiper = () => {
     }
   };
 
+  const isTouch =
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+
   const swiper = new Swiper(heroRoot, {
     modules: [Pagination, Autoplay, EffectFade],
     effect: "fade",
     fadeEffect: { crossFade: true },
     speed: 1650,
     loop: true,
-    autoplay: {
-      delay: 6400,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-    },
+    autoHeight: isTouch,
+    autoplay: isTouch
+      ? false
+      : {
+          delay: 6400,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
     pagination: {
       el: ".swiper-pagination-shell",
       clickable: true,
