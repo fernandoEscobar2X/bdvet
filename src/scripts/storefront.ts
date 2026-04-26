@@ -697,12 +697,15 @@ const cancelCartAutoClose = () => {
   }
 };
 
-const scheduleCartAutoClose = (delay = 2800) => {
+const scheduleCartAutoClose = (delay?: number) => {
   cancelCartAutoClose();
+  const isTouch =
+    typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
+  const resolved = delay ?? (isTouch ? 1400 : 2400);
   cartAutoCloseTimer = window.setTimeout(() => {
     cartAutoCloseTimer = null;
     if (state.isCartOpen) setCartOpen(false);
-  }, delay);
+  }, resolved);
 };
 
 const addToCart = (productId: string, originCard?: HTMLElement | null) => {

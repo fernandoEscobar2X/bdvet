@@ -1691,6 +1691,13 @@ select {
   z-index: 70;
 }
 
+@media (max-width: 900px) {
+  .drawer-overlay {
+    backdrop-filter: blur(3px);
+    background: rgba(9, 18, 29, 0.42);
+  }
+}
+
 .drawer-overlay[data-open="true"] {
   opacity: 1;
   pointer-events: auto;
