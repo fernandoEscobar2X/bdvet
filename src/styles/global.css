@@ -55,6 +55,17 @@ a,
 button,
 [role="button"] {
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a,
+button,
+[role="button"],
+.btn,
+.nav-link,
+.icon-button {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 button,
@@ -2085,5 +2096,17 @@ select {
 
   .page-hero {
     padding-top: 2.8rem;
+  }
+}
+
+@media (hover: none) {
+  .header-cart-pill:hover {
+    transform: none;
+    box-shadow: 0 14px 28px rgba(17, 17, 17, 0.1);
+  }
+
+  .nav-link:hover,
+  .footer-links a:hover {
+    color: inherit;
   }
 }
