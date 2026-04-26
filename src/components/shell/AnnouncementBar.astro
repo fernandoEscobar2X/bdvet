@@ -11,7 +11,14 @@ const trustMessages = siteContent.announcement
   <div class="container-shell announcement-bar__inner">
     {trustMessages.map((message, index) => (
       <>
-        <span class="announcement-bar__item">{message}</span>
+        <span
+          class:list={[
+            "announcement-bar__item",
+            index > 0 && "announcement-bar__item--secondary",
+          ]}
+        >
+          {message}
+        </span>
         {index < trustMessages.length - 1 ? (
           <span class="announcement-bar__separator" aria-hidden="true"></span>
         ) : null}

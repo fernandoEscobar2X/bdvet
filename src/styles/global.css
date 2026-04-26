@@ -2087,6 +2087,10 @@ select {
     width: 100%;
   }
 
+  .announcement-bar__item--secondary {
+    display: none;
+  }
+
   .hero-swiper {
     border-bottom-left-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
