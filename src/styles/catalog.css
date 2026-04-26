@@ -637,9 +637,10 @@
   .catalog-filter__chips {
     flex-wrap: nowrap;
     overflow-x: auto;
-    scroll-snap-type: x proximity;
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.15rem;
+    padding: 0.15rem 1rem;
+    margin: 0 -1rem;
     scrollbar-width: none;
   }
 
@@ -684,7 +685,11 @@
   }
 
   .catalog-card__media {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
+  }
+
+  .catalog-card__image {
+    object-position: center top;
   }
 
   .catalog-card__body {

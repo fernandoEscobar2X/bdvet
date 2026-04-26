@@ -1951,12 +1951,13 @@ select {
   }
 
   .brand-logo--header {
-    transform: scale(1.2);
-    height: clamp(2.8rem, 6vw, 3.6rem);
+    transform: none;
+    height: clamp(3.4rem, 9vw, 4.4rem);
   }
 
   .site-header[data-scrolled="true"] .brand-logo--header {
-    transform: scale(1.1);
+    transform: none;
+    height: clamp(3rem, 8vw, 3.8rem);
   }
 
   .header-cart-pill__label {
