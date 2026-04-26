@@ -47,6 +47,15 @@
   will-change: opacity, transform;
 }
 
+@media (hover: none), (max-width: 900px) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
+
 [data-reveal="left"]  { --reveal-x: -28px; --reveal-y: 0px; }
 [data-reveal="right"] { --reveal-x: 28px; --reveal-y: 0px; }
 [data-reveal="up"]    { --reveal-y: 24px; }
