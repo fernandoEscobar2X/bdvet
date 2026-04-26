@@ -64,13 +64,30 @@ const contactCards = [
       </div>
 
       <div class="contact-premium__map" data-reveal="left">
-        <div class="contact-premium__map-frame">
-          <iframe
-            src={buildMapsEmbedUrl(contactContent.mapsEmbed)}
-            title="Mapa de BorderVet en Tijuana"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          ></iframe>
+        <div class="contact-premium__map-frame" data-map-facade>
+          <div class="contact-premium__map-placeholder" aria-hidden="true">
+            <Icon name="map-pin" size={28} />
+            <strong>BorderVet · Tijuana</strong>
+            <span>{contactContent.addressLine}</span>
+          </div>
+          <div class="contact-premium__map-actions">
+            <button
+              class="btn btn-surface contact-premium__map-load"
+              type="button"
+              data-map-load
+              data-map-src={buildMapsEmbedUrl(contactContent.mapsEmbed)}
+            >
+              Cargar mapa interactivo
+            </button>
+            <a
+              class="btn btn-link contact-premium__map-open"
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contactContent.addressLine)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir en Google Maps
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -171,12 +188,15 @@ const contactCards = [
   }
 
   .contact-premium__map-frame {
+    position: relative;
     height: clamp(28rem, 58vh, 38rem);
     overflow: hidden;
     border-radius: 2.3rem 2.3rem 5.5rem 2.3rem;
     border: 1px solid rgba(231, 223, 210, 0.84);
     box-shadow: var(--shadow-card);
-    background: rgba(224, 242, 255, 0.42);
+    background:
+      radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.5), transparent 38%),
+      linear-gradient(160deg, rgba(224, 242, 255, 0.85), rgba(247, 239, 228, 0.65));
   }
 
   .contact-premium__map-frame iframe {
@@ -184,6 +204,54 @@ const contactCards = [
     height: 100%;
     border: 0;
     display: block;
+  }
+
+  .contact-premium__map-placeholder {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.45rem;
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--color-primary);
+    pointer-events: none;
+  }
+
+  .contact-premium__map-placeholder strong {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-heading);
+  }
+
+  .contact-premium__map-placeholder span {
+    font-size: 0.92rem;
+    color: var(--color-text);
+    max-width: 22rem;
+    line-height: 1.55;
+  }
+
+  .contact-premium__map-actions {
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    pointer-events: auto;
+  }
+
+  .contact-premium__map-load {
+    min-width: 14rem;
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .contact-premium__map-frame[data-map-loaded="true"] .contact-premium__map-placeholder,
+  .contact-premium__map-frame[data-map-loaded="true"] .contact-premium__map-actions {
+    display: none;
   }
 
   @media (max-width: 980px) {
@@ -208,5 +276,37 @@ const contactCards = [
     .contact-premium__actions {
       flex-direction: column;
     }
+
+    .contact-premium__map-frame {
+      border-radius: 1.6rem;
+    }
+
+    .contact-premium__map-actions {
+      bottom: 0.9rem;
+    }
+
+    .contact-premium__map-load {
+      min-width: 12rem;
+    }
   }
 </style>
+
+<script is:inline>
+  (() => {
+    const facade = document.querySelector('[data-map-facade]');
+    if (!facade) return;
+    const loadBtn = facade.querySelector('[data-map-load]');
+    if (!(loadBtn instanceof HTMLElement)) return;
+    loadBtn.addEventListener('click', () => {
+      const src = loadBtn.dataset.mapSrc;
+      if (!src) return;
+      const iframe = document.createElement('iframe');
+      iframe.src = src;
+      iframe.title = 'Mapa de BorderVet en Tijuana';
+      iframe.loading = 'eager';
+      iframe.referrerPolicy = 'no-referrer-when-downgrade';
+      facade.appendChild(iframe);
+      facade.setAttribute('data-map-loaded', 'true');
+    }, { once: true });
+  })();
+</script>
