@@ -1207,6 +1207,11 @@ const setupGridReveals = () => {
     items.forEach((item) => item.classList.add("is-visible"));
   };
 
+  if (isTouchDevice()) {
+    reveal();
+    return;
+  }
+
   if (prefersReducedMotion) {
     reveal();
     return;
@@ -1258,6 +1263,11 @@ const setupFeaturedCategories = () => {
   const reveal = () => {
     cards.forEach((card) => card.classList.add("is-visible"));
   };
+
+  if (isTouchDevice()) {
+    reveal();
+    return;
+  }
 
   if (prefersReducedMotion) {
     reveal();
