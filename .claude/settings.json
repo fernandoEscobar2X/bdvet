@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/User/Pictures/BorderVet commit -m ' *)",
+      "Bash(git -C /c/Users/User/Pictures/BorderVet add src/components/shell/AnnouncementBar.astro src/styles/global.css)"
+    ]
+  }
+}
