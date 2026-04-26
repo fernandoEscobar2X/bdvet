@@ -3,10 +3,18 @@ import BrandLogo from "@/components/ui/BrandLogo.astro";
 import { siteContent } from "@/lib/content";
 ---
 <aside class="mobile-drawer" data-mobile-menu data-open="false" aria-label="Menú móvil">
-  <div class="drawer-header">
+  <div class="drawer-header mobile-drawer__header">
     <div class="brand-lockup">
       <BrandLogo variant="surface" />
     </div>
+    <button
+      type="button"
+      class="icon-button mobile-drawer__close"
+      data-nav-close
+      aria-label="Cerrar menú"
+    >
+      ×
+    </button>
   </div>
   <div class="drawer-content">
     <nav class="nav" style="flex-direction:column;align-items:flex-start;">
@@ -29,3 +37,25 @@ import { siteContent } from "@/lib/content";
     </a>
   </div>
 </aside>
+
+<style>
+  .mobile-drawer__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .mobile-drawer__close {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.6rem;
+    line-height: 1;
+    background: rgba(30, 26, 71, 0.08);
+  }
+
+  .mobile-drawer__close:hover {
+    background: var(--color-primary-strong);
+    color: var(--color-white);
+  }
+</style>
