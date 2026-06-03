@@ -8,7 +8,6 @@ import "@/styles/tokens.css";
 import "@/styles/global.css";
 import "@/styles/motion.css";
 
-import scriptUrl from "@/scripts/storefront.ts?url";
 import AnnouncementBar from "@/components/shell/AnnouncementBar.astro";
 import Header from "@/components/shell/Header.astro";
 import MobileMenu from "@/components/shell/MobileMenu.astro";
@@ -78,6 +77,8 @@ const storefrontPayload = {
     <CartDrawer />
     <div class="toast" data-toast data-visible="false"></div>
 
-    <script is:inline type="module" src={scriptUrl}></script>
+    <script>
+      import "@/scripts/storefront";
+    </script>
   </body>
 </html>
