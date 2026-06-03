@@ -39,5 +39,10 @@ pnpm-debug.log*
 petopia-audit.pdf
 BORDERVET_MASTERPLAN.md
 
+# Notas de migración locales (no versionar)
+/CONTEXT.md
+/PROGRESS.md
+/BORDERVET_MIGRATION_PLAN.md
+
 # Misc
 *.tsbuildinfo
