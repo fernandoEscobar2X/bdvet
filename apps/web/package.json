@@ -8,9 +8,12 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "typecheck": "astro check"
   },
   "dependencies": {
+    "@bordervet/core": "workspace:*",
+    "@bordervet/schemas": "workspace:*",
     "astro": "^5.0.0",
     "lenis": "^1.3.23",
     "swiper": "^11.2.6",

@@ -6,10 +6,23 @@ settings:
 
 importers:
 
-  .: {}
+  .:
+    devDependencies:
+      eslint:
+        specifier: ^9.17.0
+        version: 9.39.4(jiti@2.7.0)
+      typescript:
+        specifier: ^5.8.3
+        version: 5.9.3
 
   apps/web:
     dependencies:
+      '@bordervet/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@bordervet/schemas':
+        specifier: workspace:*
+        version: link:../../packages/schemas
       astro:
         specifier: ^5.0.0
         version: 5.18.2(@types/node@24.12.4)(jiti@2.7.0)(lightningcss@1.32.0)(rollup@4.61.0)(typescript@5.9.3)(yaml@2.9.0)
@@ -53,6 +66,25 @@ importers:
       typescript-eslint:
         specifier: ^8.18.0
         version: 8.60.1(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)
+
+  packages/core:
+    devDependencies:
+      '@bordervet/config':
+        specifier: workspace:*
+        version: link:../config
+
+  packages/schemas:
+    dependencies:
+      '@bordervet/core':
+        specifier: workspace:*
+        version: link:../core
+      zod:
+        specifier: ^3.23.0
+        version: 3.25.76
+    devDependencies:
+      '@bordervet/config':
+        specifier: workspace:*
+        version: link:../config
 
 packages:
 

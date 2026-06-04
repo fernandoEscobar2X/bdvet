@@ -1,0 +1,4 @@
+{
+  "extends": "@bordervet/config/tsconfig.base.json",
+  "include": ["src"]
+}
